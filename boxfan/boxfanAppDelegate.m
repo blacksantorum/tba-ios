@@ -57,7 +57,9 @@
     
     [self setNetworkActivityIndicatorVisible:YES];
     NSDictionary *parameters = user.userDictionaryForSignIn;
+    NSLog(@"%@",user.userDictionaryForSignIn);
     [manager POST:[URLS urlStringForRailsSignIn] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
         NSDictionary *userDictionary = responseObject;
         user.userID = [userDictionary valueForKeyPath:@"user.id"];
         NSString *token = [userDictionary valueForKeyPath:@"user.session_token"];

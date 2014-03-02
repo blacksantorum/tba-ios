@@ -73,7 +73,6 @@
         
             } else {
                 self.JSONarray = (NSArray *)object;
-        
                 [self configureDataSource];
                 [self.tableView reloadData];
             }

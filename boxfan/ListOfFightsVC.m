@@ -130,7 +130,9 @@
     cell.boxerBLabel.text = [self boxerNameDisplay:fight.boxerB];
     [cell.boxerBCountryFlag setImage:[UIImage imageNamed:fight.boxerB.country]];
     
-    if (![fight.winnerID.description isEqualToString:@"-100"] && ![fight.winnerID.description isEqualToString:@"0"]) {
+    if (![fight.winnerID.description isEqualToString:@"-100"] &&
+        ![fight.winnerID.description isEqualToString:@"0"] &&
+        ![fight.winnerID.description isEqualToString:@"-1"]) {
         if (fight.stoppage) {
             cell.resultsLabel.text = @"KO";
         } else {

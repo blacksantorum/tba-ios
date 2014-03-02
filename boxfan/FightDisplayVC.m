@@ -176,7 +176,7 @@
         } else {
             cell.yourPickLabel.text = @"Your pick:";
             
-            if (![self.pick.winner.boxerID.description isEqualToString:self.fight.winnerID.description]) {
+            if (![self.pick.winner.boxerID.description isEqualToString:self.fight.winnerID.description] && ![self.fight.winnerID.description isEqualToString:@"-1"]) {
                 NSMutableAttributedString *wrongPick = [[NSMutableAttributedString alloc] initWithString:[self currentPickDescriptionLabelRepresentationForPick:self.pick]attributes:@{NSStrikethroughStyleAttributeName:
                                                                                                                                                             [NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
             

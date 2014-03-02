@@ -153,7 +153,7 @@
             } else {
             
                 NSArray *array = (NSArray *)object;
-                
+                NSLog(@"%@",array);
                 NSMutableArray *comments = [[NSMutableArray alloc] init];
                 for (NSDictionary *dictionary in array) {
                     Comment *c = [[Comment alloc] initWithDictionary:[dictionary objectForKey:@"comment"]];

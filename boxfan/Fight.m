@@ -90,7 +90,7 @@
 {
     Boxer *boxerA;
     
-    if ([self.winnerID.description isEqualToString:@"-100"] || [self.winnerID.description isEqualToString:@"0"]) {
+    if ([self.winnerID.description isEqualToString:@"-100"] || [self.winnerID.description isEqualToString:@"0"] || [self.winnerID.description isEqualToString:@"-1"]) {
         boxerA = [self.boxers firstObject];
     } else {
         for (Boxer *b in self.boxers) {
@@ -106,7 +106,7 @@
 {
     Boxer *boxerB;
     
-    if ([self.winnerID.description isEqualToString:@"-100"] || [self.winnerID.description isEqualToString:@"0"]) {
+    if ([self.winnerID.description isEqualToString:@"-100"] || [self.winnerID.description isEqualToString:@"0"] || [self.winnerID.description isEqualToString:@"-1"]) {
         boxerB = [self.boxers lastObject];
     } else {
         for (Boxer *b in self.boxers) {

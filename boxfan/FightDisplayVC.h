@@ -16,7 +16,6 @@
 #import "DecisionInfoCell.h"
 #import "CommentCell.h"
 
-#define BITLY_ACCESS_TOKEN @"39b8232f1e96640967d56ceeab10acba69b87049"
 
 @interface FightDisplayVC : UIViewController <UITableViewDataSource,UITableViewDataSource,ChangePickDelegate,ChangeDecisionDelegate,UIActionSheetDelegate>
 
