@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Pick.h"
 
 @interface Comment : NSObject
 
@@ -16,6 +17,7 @@
 @property (nonatomic,strong) User *author;
 @property BOOL isJabbedByLoggedInUser;
 @property NSInteger jabs;
+@property (nonatomic,strong) Pick *pick;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 - (NSComparisonResult)compare:(Comment *)otherComment;

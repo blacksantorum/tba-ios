@@ -13,6 +13,7 @@
 #import "BoxFanRevealController.h"
 #import "UserProfileController.h"
 #import "boxfanAppDelegate.h"
+#import "Pick.h"
 #import <math.h>
 
 @interface CommentsDisplayVC () {
@@ -156,7 +157,32 @@
                 NSLog(@"%@",array);
                 NSMutableArray *comments = [[NSMutableArray alloc] init];
                 for (NSDictionary *dictionary in array) {
-                    Comment *c = [[Comment alloc] initWithDictionary:[dictionary objectForKey:@"comment"]];
+                    NSDictionary *commentDictionary = [dictionary objectForKey:@"comment"];
+                    Comment *c = [[Comment alloc] initWithDictionary:commentDictionary];
+                    
+                    NSDictionary *pickDictionary = [commentDictionary objectForKey:@"pick"];
+                    if (![JSONDataNullCheck isNull:pickDictionary]) {
+                        Pick *pick = [[Pick alloc] init];
+                        pick.fight = self.fight;
+                        NSString *ko = [commentDictionary objectForKey:@"ko"];
+                        if ([ko.description isEqualToString:@"1"]) {
+                            pick.byStoppage = YES;
+                        } else {
+                            pick.byStoppage = NO;
+                        }
+                        pick.user = c.author;
+                        
+                        Boxer *pickedBoxer;
+                        NSString *pickedBoxerID = [commentDictionary objectForKey:@"winner_id"];
+                        for (Boxer *b in self.fight.boxers) {
+                            if ([pickedBoxerID.description isEqualToString:b.boxerID.description]) {
+                                pickedBoxer = b;
+                            }
+                        }
+                        pick.winner = pickedBoxer;
+                        c.pick = pick;
+                    }
+                    
                     [comments addObject:c];
                 }
                 
@@ -195,6 +221,21 @@
     return [self.comments count];
 }
 
+- (NSString *)commentCellDetailStringForComment:(Comment *)comment
+{
+    Boxer *pickedBoxer = comment.pick.winner;
+    return [NSString stringWithFormat:@" (%@ by %@)",pickedBoxer.lastName, comment.pick.byStoppage ? @"KO": @"dec"];
+}
+
+- (NSString *)handleTitleForComment:(Comment *)comment
+{
+    NSString *title = comment.author.handle;
+    if (comment.pick) {
+        title = [title stringByAppendingString:[self commentCellDetailStringForComment:comment]];
+    }
+    return title;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Comment Cell";
@@ -219,8 +260,8 @@
     
     [cell.jabButton setImage:[self jabButtonImageForComment:comment] forState:UIControlStateNormal];
      cell.twitterHandleButton.tintColor = [UIColor blackColor];
-    [cell.twitterHandleButton setTitle:comment.author.handle forState:UIControlStateNormal];
-    [cell.twitterHandleButton setTitle:comment.author.handle forState:UIControlStateHighlighted];
+    [cell.twitterHandleButton setTitle:[self handleTitleForComment:comment] forState:UIControlStateNormal];
+    [cell.twitterHandleButton setTitle:[self handleTitleForComment:comment] forState:UIControlStateHighlighted];
     
     [cell.commentContentTextView setText:nil];
     cell.commentContentTextView.text = comment.content;

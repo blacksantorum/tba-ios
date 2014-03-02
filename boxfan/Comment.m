@@ -23,6 +23,7 @@
         _author = [[User alloc] initWithListOfUsersDictionary:[dictionary objectForKey:@"user"]];
         _jabs = [[dictionary objectForKey:@"votes"] integerValue];
         NSString *liked = [dictionary objectForKey:@"liked"];
+        
         if ([liked isEqualToString:@"true"]) {
             _isJabbedByLoggedInUser = YES;
         } else {
