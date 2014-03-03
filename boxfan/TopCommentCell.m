@@ -40,6 +40,8 @@
     CGRect newFrameForTime = self.commentDateTimeLabel.frame;
     CGFloat newY = newFrame.origin.y + newFrame.size.height;
     self.commentDateTimeLabel.frame = CGRectMake(newFrameForTime.origin.x, newY, newFrameForTime.size.width, newFrameForTime.size.height);
+    self.commentContentTextView.selectable = YES;
+    self.commentContentTextView.scrollEnabled = NO;
 }
 
 @end

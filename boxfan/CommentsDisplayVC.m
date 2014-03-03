@@ -164,7 +164,7 @@
                     if (![JSONDataNullCheck isNull:pickDictionary]) {
                         Pick *pick = [[Pick alloc] init];
                         pick.fight = self.fight;
-                        NSString *ko = [commentDictionary objectForKey:@"ko"];
+                        NSString *ko = [pickDictionary objectForKey:@"ko"];
                         if ([ko.description isEqualToString:@"1"]) {
                             pick.byStoppage = YES;
                         } else {
@@ -173,7 +173,7 @@
                         pick.user = c.author;
                         
                         Boxer *pickedBoxer;
-                        NSString *pickedBoxerID = [commentDictionary objectForKey:@"winner_id"];
+                        NSString *pickedBoxerID = [pickDictionary objectForKey:@"winner_id"];
                         for (Boxer *b in self.fight.boxers) {
                             if ([pickedBoxerID.description isEqualToString:b.boxerID.description]) {
                                 pickedBoxer = b;
