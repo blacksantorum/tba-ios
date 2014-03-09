@@ -374,10 +374,10 @@
     CGRect keyboardFrame = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
     CGRect toolBarFrame = self.navigationController.toolbar.frame;
-    
+    __weak CommentsDisplayVC *weakSelf = self;
     [UIView animateWithDuration:0.25
                      animations:^{
-                         [self.navigationController.toolbar setFrame:CGRectMake(0, keyboardFrame.origin.y - toolBarFrame.size.height , toolBarFrame.size.width, toolBarFrame.size.height)];
+                         [weakSelf.navigationController.toolbar setFrame:CGRectMake(0, keyboardFrame.origin.y - toolBarFrame.size.height , toolBarFrame.size.width, toolBarFrame.size.height)];
                      }
                      completion:nil];
 }

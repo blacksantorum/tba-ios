@@ -359,6 +359,7 @@
 {
     [super viewWillAppear:animated];
     [self.fightInfoTableView reloadData];
+    // self.navigationController.toolbarHidden = NO;
 }
 
 - (void)setLabels
