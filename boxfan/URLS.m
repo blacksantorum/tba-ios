@@ -7,8 +7,14 @@
 //
 
 #import "URLS.h"
+#import "boxfanAppDelegate.h"
+
+@interface URLS ()
+
+@end
 
 @implementation URLS
+
 
 +(NSString *)appendSessionToken:(NSString *)urlString
 {
@@ -22,96 +28,49 @@
 
 +(BOOL)prod
 {
-    return YES;
+    boxfanAppDelegate *appDelegate = (boxfanAppDelegate *)[[UIApplication sharedApplication] delegate];
+    return appDelegate.prod;
 }
 
 +(NSString *)urlStringForPostingPickForFight:(Fight *)fight
 {
-    NSString *url = [[NSString alloc] init];
-    if ([URLS prod]) {
-        url = @"http://the-boxing-app.herokuapp.com/api/fights/";
-    } else {
-        url = @"http://192.168.1.140:3000/api/fights/";
-    }
-    url = [url stringByAppendingString:fight.fightID.description];
-    url = [url stringByAppendingString:@"/picks"];
-    
-    return [URLS appendSessionToken:url];
+    return [URLS appendSessionToken:[NSString stringWithFormat:@"%@/fights/%@/picks", [URLS prod] ? PROD_BASE_URL : TEST_BASE_URL,fight.fightID.description]];
 }
 
 +(NSString *)urlStringForPostingDecisionForFight:(Fight *)fight
 {
-    NSString *url = [[NSString alloc] init];
-    if ([URLS prod]) {
-        url = @"http://the-boxing-app.herokuapp.com/api/fights/";
-    } else {
-        url = @"http://192.168.1.140:3000/api/fights/";
-    }
-    url = [url stringByAppendingString:fight.fightID.description];
-    url = [url stringByAppendingString:@"/decisions"];
-    
-    return [URLS appendSessionToken:url];
+    return [URLS appendSessionToken:[NSString stringWithFormat:@"%@/fights/%@/decisions", [URLS prod] ? PROD_BASE_URL : TEST_BASE_URL,fight.fightID.description]];
 }
 
 + (NSString *)urlStringForJabbingComment:(Comment *)comment
 {
-    NSString *url;
-    if ([URLS prod]) {
-        url = [NSString stringWithFormat:@"http://the-boxing-app.herokuapp.com/api/comments/%@/like",[NSString stringWithFormat:@"%ld",(long)comment.commentID]];
-    } else {
-        url = [NSString stringWithFormat:@"http://192.168.1.140:3000/api/comments/%@/like",[NSString stringWithFormat:@"%ld",(long)comment.commentID]];
-    }
-    return [URLS appendSessionToken:url];
+    return [URLS appendSessionToken:[NSString stringWithFormat:@"%@/comments/%ldlike", [URLS prod] ? PROD_BASE_URL : TEST_BASE_URL,(long)comment.commentID]];
 }
 
 + (NSString *)urlStringForUnjabbingComment:(Comment *)comment
 {
-    NSString *url;
-    if ([URLS prod]) {
-        url = [NSString stringWithFormat:@"http://the-boxing-app.herokuapp.com/api/comments/%@/unlike",[NSString stringWithFormat:@"%ld",(long)comment.commentID]];
-    } else {
-        url = [NSString stringWithFormat:@"http://192.168.1.140:3000/api/comments/%@/unlike",[NSString stringWithFormat:@"%ld",(long)comment.commentID]];
-    }
-    return [URLS appendSessionToken:url];
+    return [URLS appendSessionToken:[NSString stringWithFormat:@"%@/comments/%ldunlike", [URLS prod] ? PROD_BASE_URL : TEST_BASE_URL,(long)comment.commentID]];
+}
+
++ (NSString *)urlStringForDeletingComment:(Comment *)comment
+{
+    return [URLS appendSessionToken:[NSString stringWithFormat:@"%@/comments/%d",[URLS prod] ? PROD_BASE_URL : TEST_BASE_URL,comment.commentID]];
 }
 
 + (NSString *)urlStringForPostingCommentForFight:(Fight *)fight
 {
-    NSString *url = [[NSString alloc] init];
-    if ([URLS prod]) {
-        url = @"http://the-boxing-app.herokuapp.com/api/fights/";
-    } else {
-        url = @"http://192.168.1.140:3000/api/fights/";
-    }
-    url = [url stringByAppendingString:fight.fightID.description];
-    url = [url stringByAppendingString:@"/comments"];
-    
-    return [URLS appendSessionToken:url];
+    NSLog(@"%@",[URLS appendSessionToken:[NSString stringWithFormat:@"%@/fights/%@/comments", [URLS prod] ? PROD_BASE_URL : TEST_BASE_URL,fight.fightID.description]]);
+    return [URLS appendSessionToken:[NSString stringWithFormat:@"%@/fights/%@/comments", [URLS prod] ? PROD_BASE_URL : TEST_BASE_URL,fight.fightID.description]];
 }
 
 + (NSString *)urlStringForUpdatingProfileForUser:(User *)user
 {
-    NSString *url = [[NSString alloc] init];
-    if ([URLS prod]) {
-        url = @"http://the-boxing-app.herokuapp.com/api/users/";
-    } else {
-        url = @"http://192.168.1.140:3000/api/users/";
-    }
-    url = [url stringByAppendingString:user.userID.description];
-    
-    return [URLS appendSessionToken:url];
+    return [URLS appendSessionToken:[NSString stringWithFormat:@"%@/users/%@", [URLS prod] ? PROD_BASE_URL : TEST_BASE_URL,user.userID.description]];
 }
 
 +(NSString *)urlStringForRailsSignIn
 {
-    NSString *url = [[NSString alloc] init];
-    if ([URLS prod]) {
-        url = @"http://the-boxing-app.herokuapp.com/api/signin";
-    } else {
-        url = @"http://192.168.1.140:3000/api/signin";
-    }
- 
-    return url;
+    return [NSString stringWithFormat:@"%@/signin",[URLS prod] ? PROD_BASE_URL : TEST_BASE_URL];
 }
 
 + (NSString *)urlStringForUsersTwitterWithScreenname:(NSString *)screenname
@@ -121,125 +80,42 @@
 
 + (NSString *)urlStringForUpdatingFOYtoFight:(Fight *)fight
 {
-    NSString *url;
-    if ([URLS prod]) {
-        url = [NSString stringWithFormat:@"http://the-boxing-app.herokuapp.com/api/fights/%@/foy",fight.fightID.description];
-    } else {
-        url = [NSString stringWithFormat:@"http://192.168.1.140:3000/api/fights/%@/foy",fight.fightID.description];
-    }
-    return [URLS appendSessionToken:url];
+    return [URLS appendSessionToken:[NSString stringWithFormat:@"%@/fights/%@/foy",[URLS prod] ? PROD_BASE_URL : TEST_BASE_URL ,fight.fightID.description]];
 }
 
 + (NSURL *)urlForUpcomingFights
 {
-    NSString *url = [[NSString alloc] init];
-    if ([URLS prod]) {
-        url = @"http://the-boxing-app.herokuapp.com/api/fights/future";
-    } else {
-        url = @"http://192.168.1.140:3000/api/fights/future";
-    }
-    return [NSURL URLWithString:[URLS appendSessionToken:url]];
+    return [NSURL URLWithString:[URLS appendSessionToken:[NSString stringWithFormat:@"%@/fights/future",[URLS prod] ? PROD_BASE_URL : TEST_BASE_URL]]];
 }
 
 + (NSURL *)urlForRecentFights
 {
-    NSString *url = [[NSString alloc] init];
-    if ([URLS prod]) {
-        url = @"http://the-boxing-app.herokuapp.com/api/fights/past";
-    } else {
-        url = @"http://192.168.1.140:3000/api/fights/past";
-    }
-    return [NSURL URLWithString:[URLS appendSessionToken:url]];
-}
-
-+ (NSURL *)urlForFeed
-{
-    NSString *url = [[NSString alloc] init];
-    if ([URLS prod]) {
-        url = @"http://the-boxing-app.herokuapp.com/api/feed";
-    } else {
-        url = @"http://192.168.1.140:3000/api/feed";
-    }
-    return [NSURL URLWithString:[URLS appendSessionToken:url]];
+    return [NSURL URLWithString:[URLS appendSessionToken:[NSString stringWithFormat:@"%@/fights/past",[URLS prod] ? PROD_BASE_URL : TEST_BASE_URL]]];
 }
 
 + (NSString *)urlForUsersCurrentPickForFight:(Fight *)fight
 {
-    NSString *url = [[NSString alloc] init];
-    if ([URLS prod]) {
-        url = @"http://the-boxing-app.herokuapp.com/api/fights/";
-    } else {
-        url = @"http://192.168.1.140:3000/api/fights/";
-    }
-    return [url stringByAppendingString:[NSString stringWithFormat:@"%@?session_token=%@",fight.fightID.description,[Auth sessionToken]]];
+    return [URLS appendSessionToken:[NSString stringWithFormat:@"%@/fights/%@",[URLS prod] ? PROD_BASE_URL : TEST_BASE_URL ,fight.fightID.description]];
 }
 
 + (NSString *)urlForUsersCurrentDecisionForFight:(Fight *)fight
 {
-    NSString *url = [[NSString alloc] init];
-    if ([URLS prod]) {
-        url = @"http://the-boxing-app.herokuapp.com/api/fights/";
-    } else {
-        url = @"http://192.168.1.140:3000/api/fights/";
-    }
-    return [url stringByAppendingString:[NSString stringWithFormat:@"%@?session_token=%@",fight.fightID.description,[Auth sessionToken]]];
+    return [URLS appendSessionToken:[NSString stringWithFormat:@"%@/fights/%@",[URLS prod] ? PROD_BASE_URL : TEST_BASE_URL ,fight.fightID.description]];
 }
 
 + (NSURL *)urlForUsers
 {
-    NSString *url = [[NSString alloc] init];
-    if ([URLS prod]) {
-        url = @"http://the-boxing-app.herokuapp.com/api/users";
-    } else {
-        url = @"http://192.168.1.140:3000/api/users";
-    }
-    return [NSURL URLWithString:[URLS appendSessionToken:url]];
+    return [NSURL URLWithString:[URLS appendSessionToken:[NSString stringWithFormat:@"%@/users",[URLS prod] ? PROD_BASE_URL : TEST_BASE_URL]]];
 }
 
 + (NSURL *)urlForPicksOfUser:(User *)user
 {
-    NSString *url = [[NSString alloc] init];
-    
-    if ([URLS prod]) {
-        url = [@"http://the-boxing-app.herokuapp.com/api/users/" stringByAppendingString:user.userID.description];
-    } else {
-        url = [@"http://192.168.1.140:3000/api/users/" stringByAppendingString:user.userID.description];
-    }
-    return [NSURL URLWithString:[URLS appendSessionToken:url]];
-}
-
-+ (NSURL *)urlForGods
-{
-    NSString *url = [[NSString alloc] init];
-    
-    if ([URLS prod]) {
-        url = @"http://the-boxing-app.herokuapp.com/api/users?top=10";
-    } else {
-        url = @"http://192.168.1.140:3000/api/users?top=10";
-    }
-    return [NSURL URLWithString:[URLS appendSessionTokenForGods:url]];
-}
-
-+ (NSURL *)baseURL
-{
-    NSString *url;
-    if ([URLS prod]) {
-        url = @"http://the-boxing-app.herokuapp.com/api/";
-    } else {
-        url = @"http://192.168.1.140:3000/api/";
-    }
-    return [NSURL URLWithString:url];
+    return [NSURL URLWithString:[URLS appendSessionToken:[NSString stringWithFormat:@"%@/users/%@",[URLS prod] ? PROD_BASE_URL : TEST_BASE_URL,user.userID.description]]];
 }
 
 + (NSURL *)urlForCommentsForFight:(Fight *)fight
 {
-    NSString *url;
-    if ([URLS prod]) {
-        url  = [NSString stringWithFormat:@"http://the-boxing-app.herokuapp.com/api/fights/%@/comments",fight.fightID.description];
-    } else {
-        url = [NSString stringWithFormat:@"http://192.168.1.140:3000/api/fights/%@/comments",fight.fightID.description];
-    }
-    return [NSURL URLWithString:[URLS appendSessionToken:url]];
+    return [NSURL URLWithString:[URLS appendSessionToken:[NSString stringWithFormat:@"%@/fights/%@/comments",[URLS prod] ? PROD_BASE_URL : TEST_BASE_URL,fight.fightID.description]]];
 }
 
 + (NSURL *)urlForTwitterAuth;

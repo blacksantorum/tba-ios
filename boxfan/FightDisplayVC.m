@@ -35,6 +35,7 @@
 // pick, dictionary percentages
 @property (strong,nonatomic) NSDictionary *boxersToPickPercentages;
 @property (strong,nonatomic) NSDictionary *boxersToDecisionPercentages;
+@property (nonatomic) NSInteger picksCount;
 
 @property (strong,nonatomic) NSArray *comments;
 
@@ -288,6 +289,9 @@
             
             } else {
                 self.JSONdictionary = (NSDictionary *)object;
+                id picksObj = [self.JSONdictionary valueForKeyPath:@"fight.picks_count"];
+                self.picksCount = [picksObj integerValue];
+                NSLog(@"%@",[self.JSONdictionary valueForKeyPath:@"fight.picks_count"]);
                 [self configureDataSource];
                 
             }
@@ -419,7 +423,7 @@
     }
     else if (section == 2)
     {
-        return @"Predictions";
+        return [NSString stringWithFormat:@"Predictions (%d)",self.picksCount];
     }
     else
     {

@@ -7,8 +7,28 @@
 //
 
 #import "CommentCell.h"
+#import <AFNetworking/AFHTTPRequestOperationManager.h>
+#import "boxfanAppDelegate.h"
 
-@implementation CommentCell
+@interface CommentCell ()
+
+@property (strong,nonatomic) AFHTTPRequestOperationManager *manager;
+
+@end
+
+@implementation CommentCell {
+    UIButton *deleteButton;
+}
+
+- (AFHTTPRequestOperationManager *)manager
+{
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/",[URLS prod] ? PROD_BASE_URL : TEST_BASE_URL]];
+    
+    if (!_manager) {
+        _manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:url];
+    }
+    return _manager;
+}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -49,6 +69,47 @@
     }
 }
 
+- (void)deleteComment:(Comment *)comment
+{
+    [(boxfanAppDelegate *)[[UIApplication sharedApplication] delegate] setNetworkActivityIndicatorVisible:YES];
+    [self.manager DELETE:[URLS urlStringForDeletingComment:comment] parameters:nil
+                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                     if ([self.delegate respondsToSelector:@selector(commentDeleted)]) {
+                         [deleteButton removeFromSuperview];
+                         [self.delegate commentDeleted];
+                     }
+                     [(boxfanAppDelegate *)[[UIApplication sharedApplication] delegate] setNetworkActivityIndicatorVisible:NO];
+    }
+                 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                     [(boxfanAppDelegate *)[[UIApplication sharedApplication] delegate] setNetworkActivityIndicatorVisible:NO];
+                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry. Can't connect."
+                                                                     message:@"Your update could not be completed. Please check your data connection."
+                                                                    delegate:self
+                                                           cancelButtonTitle:@"OK"
+                                                           otherButtonTitles:nil];
+                     [alert show];
+
+    }];
+}
+
+- (void)showDeleteAlert:(id)sender
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete comment"
+                                                    message:@"Are you sure you would like to delete this comment?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"No"
+                                          otherButtonTitles:@"Yes",nil];
+    [alert setTag:1];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 1 && buttonIndex == 1) {
+        [self deleteComment:self.comment];
+    }
+}
+
 - (void)layoutSubviews
 {
     CGFloat fixedWidth = self.commentContentTextView.frame.size.width;
@@ -60,6 +121,20 @@
     CGRect newFrameForTime = self.commentDateTimeLabel.frame;
     CGFloat newY = newFrame.origin.y + newFrame.size.height;
     self.commentDateTimeLabel.frame = CGRectMake(newFrameForTime.origin.x, newY, newFrameForTime.size.width, newFrameForTime.size.height);
+    
+    if ([self.comment.author isEqualToUser:self.loggedInUser]) {
+        deleteButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        CGRect timeLabelFrame = self.commentDateTimeLabel.frame;
+        deleteButton.frame = CGRectMake(259.0, timeLabelFrame.origin.y, 46.0, 30.0);
+        [deleteButton addTarget:self action:@selector(showDeleteAlert:) forControlEvents:UIControlEventTouchUpInside];
+        [deleteButton setTitle:@"Delete" forState:UIControlStateNormal];
+        [deleteButton setTitle:@"Delete" forState:UIControlStateHighlighted];
+        
+        deleteButton.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+        [self addSubview:deleteButton];
+    }
+    
+    
 }
 
 @end

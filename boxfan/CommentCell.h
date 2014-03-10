@@ -21,9 +21,18 @@
 
 @end
 
-@interface CommentCell : UITableViewCell
+@protocol CommentDeletedDelegate <NSObject>
+
+- (void)commentDeleted;
+
+@end
+
+
+
+@interface CommentCell : UITableViewCell <UIAlertViewDelegate>
 
 @property (strong,nonatomic) Comment *comment;
+@property (strong,nonatomic) User *loggedInUser;
 
 @property (weak, nonatomic) IBOutlet UIButton *jabButton;
 @property (weak, nonatomic) IBOutlet UIButton *twitterHandleButton;

@@ -31,6 +31,11 @@
 
 @implementation CommentsDisplayVC
 
+- (void)commentDeleted
+{
+    [self refresh];
+}
+
 - (void)setOriginalToolbarFrame:(CGRect)originalToolbarFrame
 {
     if (!frameSet) {
@@ -47,8 +52,10 @@
 
 - (AFHTTPRequestOperationManager *)manager
 {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/",[URLS prod] ? PROD_BASE_URL : TEST_BASE_URL]];
+
     if (!_manager) {
-        _manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[URLS baseURL]];
+        _manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:url];
     }
     return _manager;
 }
@@ -154,7 +161,6 @@
             } else {
             
                 NSArray *array = (NSArray *)object;
-                NSLog(@"%@",array);
                 NSMutableArray *comments = [[NSMutableArray alloc] init];
                 for (NSDictionary *dictionary in array) {
                     NSDictionary *commentDictionary = [dictionary objectForKey:@"comment"];
@@ -257,6 +263,7 @@
     Comment *comment = self.comments[indexPath.row];
     
     cell.comment = comment;
+    cell.loggedInUser = self.loggedInUser;
     
     [cell.jabButton setImage:[self jabButtonImageForComment:comment] forState:UIControlStateNormal];
      cell.twitterHandleButton.tintColor = [UIColor blackColor];

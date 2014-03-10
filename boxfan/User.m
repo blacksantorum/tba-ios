@@ -74,4 +74,9 @@
     return [NSString stringWithFormat:@"%@ %@ %@ %@",self.userID,self.handle,self.name,self.profileImageURL];
 }
 
+- (BOOL)isEqualToUser:(User *)user
+{
+    return [[self.handle lowercaseString] isEqualToString:[user.handle lowercaseString]];
+}
+
 @end

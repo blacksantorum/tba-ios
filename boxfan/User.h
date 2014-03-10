@@ -24,6 +24,7 @@
 // encoding
 -(void)encodeWithCoder:(NSCoder *)encoder;
 -(instancetype)initWithCoder:(NSCoder *)decoder;
+- (BOOL)isEqualToUser:(User *)user;
 
 -(NSDictionary *)userDictionaryForSignIn;
 

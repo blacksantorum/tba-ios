@@ -12,6 +12,8 @@
 
 @interface boxfanAppDelegate : UIResponder <UIApplicationDelegate,PFLogInViewControllerDelegate,LogOutDelegate>
 
+@property (nonatomic) BOOL prod;
+
 @property (strong, nonatomic) UIWindow *window;
 
 - (void)setNetworkActivityIndicatorVisible:(BOOL)setVisible;

@@ -25,6 +25,11 @@
 
 @implementation boxfanAppDelegate
 
+- (BOOL)prod
+{
+    return NO;
+}
+
 - (void)setNetworkActivityIndicatorVisible:(BOOL)setVisible {
     static NSInteger NumberOfCallsToSetVisible = 0;
     if (setVisible)
