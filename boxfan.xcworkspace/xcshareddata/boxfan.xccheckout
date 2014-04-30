@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0E3EA603-732C-4BB2-AD62-A4D9DB4DDCE6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>boxfan</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>33326452-59F8-4D61-83CF-16ED0AA2F495</key>
+		<string>https://github.com/blacksantorum/the-problem.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>boxfan.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>33326452-59F8-4D61-83CF-16ED0AA2F495</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/blacksantorum/the-problem.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>33326452-59F8-4D61-83CF-16ED0AA2F495</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>33326452-59F8-4D61-83CF-16ED0AA2F495</string>
+			<key>IDESourceControlWCCName</key>
+			<string>boxfan</string>
+		</dict>
+	</array>
+</dict>
+</plist>

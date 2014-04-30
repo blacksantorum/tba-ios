@@ -52,6 +52,7 @@
     if ([defaults objectForKey:@"Token"]) {
         token = [defaults objectForKey:@"Token"];
     }
+    NSLog(@"%@",token);
     return token;
 }
 

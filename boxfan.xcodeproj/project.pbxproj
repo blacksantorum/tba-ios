@@ -40,6 +40,7 @@
 		EC53741318810C7800DF16AB /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC53741218810C7800DF16AB /* Social.framework */; };
 		EC53741518810E4100DF16AB /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC53741418810E4100DF16AB /* FacebookSDK.framework */; };
 		EC537418188227AC00DF16AB /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = EC537417188227AC00DF16AB /* Auth.m */; };
+		EC57FA141910BD9600CCEBD0 /* TBARailsClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EC57FA131910BD9600CCEBD0 /* TBARailsClient.m */; };
 		EC616785189273FA00E9843E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC616784189273FA00E9843E /* Main.storyboard */; };
 		EC616788189274B700E9843E /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = EC616787189274B700E9843E /* Comment.m */; };
 		EC61678B189353B300E9843E /* CommentsDisplayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EC61678A189353B200E9843E /* CommentsDisplayVC.m */; };
@@ -401,6 +402,8 @@
 		EC53741418810E4100DF16AB /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		EC537416188227AC00DF16AB /* Auth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Auth.h; sourceTree = "<group>"; };
 		EC537417188227AC00DF16AB /* Auth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Auth.m; sourceTree = "<group>"; };
+		EC57FA121910BD9600CCEBD0 /* TBARailsClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TBARailsClient.h; path = Networking/TBARailsClient.h; sourceTree = "<group>"; };
+		EC57FA131910BD9600CCEBD0 /* TBARailsClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TBARailsClient.m; path = Networking/TBARailsClient.m; sourceTree = "<group>"; };
 		EC616784189273FA00E9843E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		EC616786189274B700E9843E /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		EC616787189274B700E9843E /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
@@ -809,6 +812,15 @@
 			name = "Custom Cells";
 			sourceTree = "<group>";
 		};
+		EC57FA111910BD0D00CCEBD0 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				EC57FA121910BD9600CCEBD0 /* TBARailsClient.h */,
+				EC57FA131910BD9600CCEBD0 /* TBARailsClient.m */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
 		ECA0CE2D185E4EF8003380C5 = {
 			isa = PBXGroup;
 			children = (
@@ -858,6 +870,7 @@
 			isa = PBXGroup;
 			children = (
 				EC616784189273FA00E9843E /* Main.storyboard */,
+				EC57FA111910BD0D00CCEBD0 /* Networking */,
 				EC0D5B431885433D009B32B4 /* Nav Subclasses */,
 				ECC109931886A66A000B70CF /* Sidebar */,
 				ECD1151D187DEAD300530434 /* Utility Classes */,
@@ -1768,6 +1781,7 @@
 				EC374ADB1890947200C4343A /* DecisionInfoCell.m in Sources */,
 				ECCA0A8B18972FE500403AFD /* ProfileCell.m in Sources */,
 				EC374AA8188F532C00C4343A /* PickInfoCell.m in Sources */,
+				EC57FA141910BD9600CCEBD0 /* TBARailsClient.m in Sources */,
 				EC81025918946BD70092B7DB /* CommentCell.m in Sources */,
 				EC81026518949BDE0092B7DB /* NewCommentsDisplayVC.m in Sources */,
 				ECD11526187E37DF00530434 /* FightDisplayVC.m in Sources */,

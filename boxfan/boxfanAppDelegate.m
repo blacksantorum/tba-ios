@@ -14,6 +14,7 @@
 #import "BoxingScheduleVC.h"
 #import "BoxFanRevealController.h"
 #import <AFNetworking/AFHTTPRequestOperationManager.h>
+#import "TBARailsClient.h"
 
 #define NavigationBarColor [UIColor colorWithRed:.170 green:.001 blue:.02 alpha:.8]
 
@@ -169,6 +170,9 @@
     } else {
         [self setUpRevealController];
     }
+    
+    // [[TBARailsClient sharedClient] fetchUpcomingFights];
+    
     return YES;
 }
 
