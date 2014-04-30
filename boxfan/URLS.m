@@ -44,12 +44,12 @@
 
 + (NSString *)urlStringForJabbingComment:(Comment *)comment
 {
-    return [URLS appendSessionToken:[NSString stringWithFormat:@"%@/comments/%ldlike", [URLS prod] ? PROD_BASE_URL : TEST_BASE_URL,(long)comment.commentID]];
+    return [URLS appendSessionToken:[NSString stringWithFormat:@"%@/comments/%ld/like", [URLS prod] ? PROD_BASE_URL : TEST_BASE_URL,(long)comment.commentID]];
 }
 
 + (NSString *)urlStringForUnjabbingComment:(Comment *)comment
 {
-    return [URLS appendSessionToken:[NSString stringWithFormat:@"%@/comments/%ldunlike", [URLS prod] ? PROD_BASE_URL : TEST_BASE_URL,(long)comment.commentID]];
+    return [URLS appendSessionToken:[NSString stringWithFormat:@"%@/comments/%ld/unlike", [URLS prod] ? PROD_BASE_URL : TEST_BASE_URL,(long)comment.commentID]];
 }
 
 + (NSString *)urlStringForDeletingComment:(Comment *)comment
@@ -59,7 +59,6 @@
 
 + (NSString *)urlStringForPostingCommentForFight:(Fight *)fight
 {
-    NSLog(@"%@",[URLS appendSessionToken:[NSString stringWithFormat:@"%@/fights/%@/comments", [URLS prod] ? PROD_BASE_URL : TEST_BASE_URL,fight.fightID.description]]);
     return [URLS appendSessionToken:[NSString stringWithFormat:@"%@/fights/%@/comments", [URLS prod] ? PROD_BASE_URL : TEST_BASE_URL,fight.fightID.description]];
 }
 

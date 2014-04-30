@@ -38,10 +38,10 @@
 {
     [super layoutSubviews];
     
-    CGRect gaugeFrame				= CGRectMake(10.0,
-                                                 -100.0,
-                                                 300.0,
-                                                 300.0);
+    CGRect gaugeFrame				= CGRectMake(35.0,
+                                                  -100.0,
+                                                  250.0,
+                                                  250.0);
     self.gauge = [[MSSimpleGauge alloc] initWithFrame:gaugeFrame];
     if (self.boxerAPercentage == 0.0 && self.boxerBPercentage == 0.0) {
         [self.gauge setValue:50.0];

@@ -16,9 +16,7 @@
 
 @end
 
-@implementation CommentCell {
-    UIButton *deleteButton;
-}
+@implementation CommentCell
 
 - (AFHTTPRequestOperationManager *)manager
 {
@@ -75,7 +73,6 @@
     [self.manager DELETE:[URLS urlStringForDeletingComment:comment] parameters:nil
                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
                      if ([self.delegate respondsToSelector:@selector(commentDeleted)]) {
-                         [deleteButton removeFromSuperview];
                          [self.delegate commentDeleted];
                      }
                      [(boxfanAppDelegate *)[[UIApplication sharedApplication] delegate] setNetworkActivityIndicatorVisible:NO];
@@ -92,7 +89,7 @@
     }];
 }
 
-- (void)showDeleteAlert:(id)sender
+- (IBAction)showDeleteAlert:(id)sender
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete comment"
                                                     message:@"Are you sure you would like to delete this comment?"
@@ -122,6 +119,7 @@
     CGFloat newY = newFrame.origin.y + newFrame.size.height;
     self.commentDateTimeLabel.frame = CGRectMake(newFrameForTime.origin.x, newY, newFrameForTime.size.width, newFrameForTime.size.height);
     
+    /*
     if ([self.comment.author isEqualToUser:self.loggedInUser]) {
         deleteButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         CGRect timeLabelFrame = self.commentDateTimeLabel.frame;
@@ -133,7 +131,7 @@
         deleteButton.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
         [self addSubview:deleteButton];
     }
-    
+    */
     
 }
 

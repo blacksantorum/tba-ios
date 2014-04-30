@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C19AC8458FAD439FA2224948 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B423D2962D5A439EABD428EB /* libPods.a */; };
+		EC08517218CD9DD1000FC69A /* MyCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC08517118CD9DD1000FC69A /* MyCommentCell.xib */; };
+		EC08517518CD9E35000FC69A /* MyCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC08517418CD9E35000FC69A /* MyCommentCell.m */; };
 		EC0D5B3E188542D3009B32B4 /* UpcomingFightNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D5B3D188542D3009B32B4 /* UpcomingFightNavController.m */; };
 		EC0D5B461886126D009B32B4 /* LeftButtonNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D5B451886126D009B32B4 /* LeftButtonNavController.m */; };
 		EC0D5B4918869543009B32B4 /* RecentFightNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D5B4818869543009B32B4 /* RecentFightNavController.m */; };
@@ -353,6 +355,9 @@
 /* Begin PBXFileReference section */
 		3D7AF779750748D3BD78908F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		B423D2962D5A439EABD428EB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC08517118CD9DD1000FC69A /* MyCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCommentCell.xib; sourceTree = "<group>"; };
+		EC08517318CD9E35000FC69A /* MyCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentCell.h; sourceTree = "<group>"; };
+		EC08517418CD9E35000FC69A /* MyCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentCell.m; sourceTree = "<group>"; };
 		EC0D5B3C188542D3009B32B4 /* UpcomingFightNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpcomingFightNavController.h; sourceTree = "<group>"; };
 		EC0D5B3D188542D3009B32B4 /* UpcomingFightNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpcomingFightNavController.m; sourceTree = "<group>"; };
 		EC0D5B441886126D009B32B4 /* LeftButtonNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftButtonNavController.h; path = boxfan/LeftButtonNavController.h; sourceTree = "<group>"; };
@@ -1259,6 +1264,9 @@
 				EC4C0200189FABF800310CF8 /* NoCommentsCell.h */,
 				EC4C0201189FABF800310CF8 /* NoCommentsCell.m */,
 				EC81025518946BA60092B7DB /* CommentCell.xib */,
+				EC08517118CD9DD1000FC69A /* MyCommentCell.xib */,
+				EC08517318CD9E35000FC69A /* MyCommentCell.h */,
+				EC08517418CD9E35000FC69A /* MyCommentCell.m */,
 				EC81025718946BD70092B7DB /* CommentCell.h */,
 				EC81025818946BD70092B7DB /* CommentCell.m */,
 			);
@@ -1494,6 +1502,7 @@
 				ECC10BA6188E2F14000B70CF /* Palau.png in Resources */,
 				ECC10BC3188E2F14000B70CF /* Solomon Islands.png in Resources */,
 				ECC10B1D188E2F14000B70CF /* Bosnia & Herzegovina.png in Resources */,
+				EC08517218CD9DD1000FC69A /* MyCommentCell.xib in Resources */,
 				ECC10BD6188E2F14000B70CF /* Thailand.png in Resources */,
 				ECC10BB7188E2F14000B70CF /* Samoa.png in Resources */,
 				ECC10BAD188E2F14000B70CF /* Poland.png in Resources */,
@@ -1789,6 +1798,7 @@
 				EC81026218949BC60092B7DB /* MostJabbedCommentsDisplayVC.m in Sources */,
 				EC0D5B461886126D009B32B4 /* LeftButtonNavController.m in Sources */,
 				ECA0CE73185E5818003380C5 /* Boxer.m in Sources */,
+				EC08517518CD9E35000FC69A /* MyCommentCell.m in Sources */,
 				EC374AD2188F9BDE00C4343A /* JSONDataNullCheck.m in Sources */,
 				ECA15D7E189507C70005E920 /* ListOfFightsVC.m in Sources */,
 				EC374AA3188F45FB00C4343A /* FightInfoCell.m in Sources */,

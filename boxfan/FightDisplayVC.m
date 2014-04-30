@@ -17,6 +17,8 @@
 #import "boxfanAppDelegate.h"
 #import "NoCommentsCell.h"
 
+#define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
+
 
 
 @interface FightDisplayVC () {
@@ -291,7 +293,6 @@
                 self.JSONdictionary = (NSDictionary *)object;
                 id picksObj = [self.JSONdictionary valueForKeyPath:@"fight.picks_count"];
                 self.picksCount = [picksObj integerValue];
-                NSLog(@"%@",[self.JSONdictionary valueForKeyPath:@"fight.picks_count"]);
                 [self configureDataSource];
                 
             }
@@ -373,7 +374,7 @@
     self.boxerBFirstNameLabel.text = self.fight.boxerB.firstName;
     self.boxerBLastNameLabel.text = self.fight.boxerB.lastName;
     
-    if (![self.fight.winnerID.description isEqualToString:@"-100"] && ![self.fight.winnerID.description isEqualToString:@"0"]) {
+    if (![self.fight.winnerID.description isEqualToString:@"-100"] && ![self.fight.winnerID.description isEqualToString:@"0"] && ![self.fight.winnerID.description isEqualToString:@"-1"]) {
         if (self.fight.stoppage) {
             self.resultLabel.text = @"KO";
         } else {
@@ -513,7 +514,27 @@
     } else if (indexPath.section == 1) {
         return 66.0;
     } else {
-        return 302.0;
+        if (([[UIScreen mainScreen] bounds].size.height-568)) {
+            if (![self.fight.winnerID.description isEqualToString:@"-100"] && ![self.fight.winnerID.description isEqualToString:@"-1"]) {
+                if (self.fight.stoppage) {
+                    if (indexPath.section == 2) {
+                        return 326.0;
+                    } else {
+                        return 247.0;
+                    }
+                } else {
+                    if (indexPath.section == 2) {
+                        return 247.0;
+                    } else {
+                        return 326.0;
+                    }
+                }
+            } else {
+                return 326.0;
+            }
+        } else {
+            return 247.0;
+        }
     }
 }
 

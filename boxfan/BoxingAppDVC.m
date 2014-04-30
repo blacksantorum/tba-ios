@@ -73,6 +73,7 @@
         
             } else {
                 self.JSONarray = (NSArray *)object;
+                // NSLog(@"%@",self.JSONarray);
                 [self configureDataSource];
                 [self.tableView reloadData];
             }

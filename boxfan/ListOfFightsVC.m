@@ -142,6 +142,20 @@
         cell.resultsLabel.text = @"drew";
     }
     
+    // Test cell color
+    
+    
+    if ([fight.winnerID.description isEqualToString:@"-1"]) {
+        [UIView animateWithDuration:0.75 animations:^{
+            cell.backgroundColor = [UIColor colorWithRed:.2 green:.2 blue:.2 alpha:0.05];
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.75 animations:^{
+                cell.backgroundColor = [UIColor whiteColor];
+            }];
+        }];
+        cell.backgroundColor =  [UIColor colorWithRed:.2 green:.2 blue:.2 alpha:0.05];
+    }
+    
     return cell;
 }
 

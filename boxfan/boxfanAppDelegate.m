@@ -27,7 +27,7 @@
 
 - (BOOL)prod
 {
-    return NO;
+    return YES;
 }
 
 - (void)setNetworkActivityIndicatorVisible:(BOOL)setVisible {
@@ -40,7 +40,7 @@
     // The assertion helps to find programmer errors in activity indicator management.
     // Since a negative NumberOfCallsToSetVisible is not a fatal error,
     // it should probably be removed from production code.
-    NSAssert(NumberOfCallsToSetVisible >= 0, @"Network Activity Indicator was asked to hide more often than shown");
+   //  NSAssert(NumberOfCallsToSetVisible >= 0, @"Network Activity Indicator was asked to hide more often than shown");
     
     // Display the indicator as long as our static counter is > 0.
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:(NumberOfCallsToSetVisible > 0)];
@@ -62,9 +62,7 @@
     
     [self setNetworkActivityIndicatorVisible:YES];
     NSDictionary *parameters = user.userDictionaryForSignIn;
-    NSLog(@"%@",user.userDictionaryForSignIn);
     [manager POST:[URLS urlStringForRailsSignIn] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@",responseObject);
         NSDictionary *userDictionary = responseObject;
         user.userID = [userDictionary valueForKeyPath:@"user.id"];
         NSString *token = [userDictionary valueForKeyPath:@"user.session_token"];

@@ -15,6 +15,7 @@
 #import "boxfanAppDelegate.h"
 #import "Pick.h"
 #import <math.h>
+#import "MyCommentCell.h"
 
 @interface CommentsDisplayVC () {
     NSMutableDictionary *textViews;
@@ -242,31 +243,28 @@
     return title;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (MyCommentCell *)myCommentCellForComment:(Comment*)comment inTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Comment Cell";
+    static NSString *MyCommentCellIdentifier = @"My Comment Cell";
+    [self.tableView registerClass:[MyCommentCell class] forCellReuseIdentifier:MyCommentCellIdentifier];
     
-    [self.tableView registerClass:[CommentCell class] forCellReuseIdentifier:CellIdentifier];
-    
-    CommentCell *cell = (CommentCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    MyCommentCell *cell = (MyCommentCell *)[tableView dequeueReusableCellWithIdentifier:MyCommentCellIdentifier forIndexPath:indexPath];
     
     if (cell == nil) {
-        NSArray* topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"CommentCell" owner:self options:nil];
+        NSArray* topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"MyCommentCell" owner:self options:nil];
         for (id currentObject in topLevelObjects) {
             if ([currentObject isKindOfClass:[UITableViewCell class]]) {
-                cell = (CommentCell *)currentObject;
+                cell = (MyCommentCell *)currentObject;
                 break;
             }
         }
     }
     
-    Comment *comment = self.comments[indexPath.row];
-    
     cell.comment = comment;
     cell.loggedInUser = self.loggedInUser;
     
     [cell.jabButton setImage:[self jabButtonImageForComment:comment] forState:UIControlStateNormal];
-     cell.twitterHandleButton.tintColor = [UIColor blackColor];
+    cell.twitterHandleButton.tintColor = [UIColor blackColor];
     [cell.twitterHandleButton setTitle:[self handleTitleForComment:comment] forState:UIControlStateNormal];
     [cell.twitterHandleButton setTitle:[self handleTitleForComment:comment] forState:UIControlStateHighlighted];
     
@@ -274,9 +272,6 @@
     cell.commentContentTextView.text = comment.content;
     
     cell.commentContentTextView.scrollEnabled = NO;
-    
-    
-    
     
     TTTTimeIntervalFormatter *formatter = [[TTTTimeIntervalFormatter alloc] init];
     
@@ -291,6 +286,63 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
+}
+
+- (CommentCell *)commentCellForComment:(Comment *)comment forTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Comment Cell";
+    [self.tableView registerClass:[CommentCell class] forCellReuseIdentifier:CellIdentifier];
+    
+    CommentCell *cell = (CommentCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    if (cell == nil) {
+        NSArray* topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"CommentCell" owner:self options:nil];
+        for (id currentObject in topLevelObjects) {
+            if ([currentObject isKindOfClass:[UITableViewCell class]]) {
+                cell = (CommentCell *)currentObject;
+                break;
+            }
+        }
+    }
+    
+    cell.comment = comment;
+    
+    cell.loggedInUser = self.loggedInUser;
+    
+    [cell.jabButton setImage:[self jabButtonImageForComment:comment] forState:UIControlStateNormal];
+    cell.twitterHandleButton.tintColor = [UIColor blackColor];
+    [cell.twitterHandleButton setTitle:[self handleTitleForComment:comment] forState:UIControlStateNormal];
+    [cell.twitterHandleButton setTitle:[self handleTitleForComment:comment] forState:UIControlStateHighlighted];
+    
+    [cell.commentContentTextView setText:nil];
+    cell.commentContentTextView.text = comment.content;
+    
+    cell.commentContentTextView.scrollEnabled = NO;
+    
+    TTTTimeIntervalFormatter *formatter = [[TTTTimeIntervalFormatter alloc] init];
+    
+    // formatted time interval from comment date to now
+    cell.commentDateTimeLabel.text = [formatter stringForTimeIntervalFromDate:[NSDate date] toDate:comment.date];
+    cell.totalJabsLabel.text = [NSString stringWithFormat:@"%d",(int)comment.jabs];
+    
+    [textViews setObject:cell.commentContentTextView forKey:indexPath];
+    cell.commentContentTextView.delegate = self;
+    
+    cell.delegate = self;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    return cell;
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Comment *comment = self.comments[indexPath.row];
+
+    if ([comment.author isEqualToUser:self.loggedInUser]) {
+        return [self myCommentCellForComment:comment inTableView:tableView atIndexPath:indexPath];
+    } else {
+        return [self commentCellForComment:comment forTableView:tableView atIndexPath:indexPath];
+    }
 }
 
 - (UIImage *)jabButtonImageForComment:(Comment *)comment
@@ -311,6 +363,7 @@
         url = [URLS urlStringForJabbingComment:comment];
     }
     [(boxfanAppDelegate *)[[UIApplication sharedApplication] delegate] setNetworkActivityIndicatorVisible:YES];
+    NSLog(@"%@",url);
     [self.manager POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
     
         [(boxfanAppDelegate *)[[UIApplication sharedApplication] delegate] setNetworkActivityIndicatorVisible:NO];
