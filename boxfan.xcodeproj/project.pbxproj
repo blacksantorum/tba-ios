@@ -326,6 +326,7 @@
 		ECC10BF0188E2F14000B70CF /* Yemen.png in Resources */ = {isa = PBXBuildFile; fileRef = ECC10AFD188E2F14000B70CF /* Yemen.png */; };
 		ECC10BF1188E2F14000B70CF /* Zambia.png in Resources */ = {isa = PBXBuildFile; fileRef = ECC10AFE188E2F14000B70CF /* Zambia.png */; };
 		ECC10BF2188E2F14000B70CF /* Zimbabwe.png in Resources */ = {isa = PBXBuildFile; fileRef = ECC10AFF188E2F14000B70CF /* Zimbabwe.png */; };
+		ECC92C631911D38C008617EC /* TBATwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC92C621911D38C008617EC /* TBATwitterClient.m */; };
 		ECCA0A7C18970F3A00403AFD /* UserProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA0A7B18970F3A00403AFD /* UserProfileController.m */; };
 		ECCA0A7F1897127500403AFD /* FOYCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECCA0A7E1897127500403AFD /* FOYCell.xib */; };
 		ECCA0A821897181E00403AFD /* FOYCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA0A811897181E00403AFD /* FOYCell.m */; };
@@ -717,6 +718,8 @@
 		ECC10AFD188E2F14000B70CF /* Yemen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yemen.png; sourceTree = "<group>"; };
 		ECC10AFE188E2F14000B70CF /* Zambia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Zambia.png; sourceTree = "<group>"; };
 		ECC10AFF188E2F14000B70CF /* Zimbabwe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Zimbabwe.png; sourceTree = "<group>"; };
+		ECC92C611911D38C008617EC /* TBATwitterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBATwitterClient.h; sourceTree = "<group>"; };
+		ECC92C621911D38C008617EC /* TBATwitterClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBATwitterClient.m; sourceTree = "<group>"; };
 		ECCA0A7A18970F3A00403AFD /* UserProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileController.h; sourceTree = "<group>"; };
 		ECCA0A7B18970F3A00403AFD /* UserProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileController.m; sourceTree = "<group>"; };
 		ECCA0A7E1897127500403AFD /* FOYCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FOYCell.xib; sourceTree = "<group>"; };
@@ -817,6 +820,8 @@
 			children = (
 				EC57FA121910BD9600CCEBD0 /* TBARailsClient.h */,
 				EC57FA131910BD9600CCEBD0 /* TBARailsClient.m */,
+				ECC92C611911D38C008617EC /* TBATwitterClient.h */,
+				ECC92C621911D38C008617EC /* TBATwitterClient.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -1782,6 +1787,7 @@
 				ECCA0A8B18972FE500403AFD /* ProfileCell.m in Sources */,
 				EC374AA8188F532C00C4343A /* PickInfoCell.m in Sources */,
 				EC57FA141910BD9600CCEBD0 /* TBARailsClient.m in Sources */,
+				ECC92C631911D38C008617EC /* TBATwitterClient.m in Sources */,
 				EC81025918946BD70092B7DB /* CommentCell.m in Sources */,
 				EC81026518949BDE0092B7DB /* NewCommentsDisplayVC.m in Sources */,
 				ECD11526187E37DF00530434 /* FightDisplayVC.m in Sources */,

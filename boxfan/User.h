@@ -28,4 +28,6 @@
 
 -(NSDictionary *)userDictionaryForSignIn;
 
++ (User *)getCurrentUser;
+
 @end

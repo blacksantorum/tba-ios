@@ -79,4 +79,16 @@
     return [[self.handle lowercaseString] isEqualToString:[user.handle lowercaseString]];
 }
 
++ (User *)getCurrentUser
+{
+    static User *currentUser = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        currentUser = [[self alloc] init];
+    });
+    
+    return currentUser;
+}
+
 @end

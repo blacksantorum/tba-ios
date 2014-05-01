@@ -35,13 +35,29 @@ static NSString * const TBARailsURLString = @"http://www.theboxingapp.com/api/";
 
 - (void)fetchUpcomingFights
 {
-    [self GET:@"fights/past" parameters:@{@"session_token" : @"T8-5y3JoMpKqOd5HGPAAKg"} success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
+    [self GET:@"fights/future" parameters:@{@"session_token" : @"T8-5y3JoMpKqOd5HGPAAKg"} success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([self.delegate respondsToSelector:@selector(TBARailsClient:didUpdateWithFights:)]) {
+            [self.delegate TBARailsClient:self didUpdateWithFights:responseObject];
+        }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        //
+        if ([self.delegate respondsToSelector:@selector(TBARailsClient:didFailWithError:)]) {
+            [self.delegate TBARailsClient:self didFailWithError:error];
+        }
     }];
 }
 
+- (void)fetchRecentFights
+{
+    [self GET:@"fights/past" parameters:@{@"session_token" : @"T8-5y3JoMpKqOd5HGPAAKg"} success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([self.delegate respondsToSelector:@selector(TBARailsClient:didUpdateWithFights:)]) {
+            [self.delegate TBARailsClient:self didUpdateWithFights:responseObject];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if ([self.delegate respondsToSelector:@selector(TBARailsClient:didFailWithError:)]) {
+            [self.delegate TBARailsClient:self didFailWithError:error];
+        }
+    }];
+}
 
 
 @end
