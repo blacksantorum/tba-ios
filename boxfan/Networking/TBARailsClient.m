@@ -33,6 +33,19 @@ static NSString * const TBARailsURLString = @"http://www.theboxingapp.com/api/";
     return self;
 }
 
+- (void)signInWithBackend:(NSDictionary *)dictionary
+{
+    [self POST:@"signin" parameters:dictionary success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([self.delegate respondsToSelector:@selector(TBARailsClient:didLoginUser:)]) {
+            [self.delegate TBARailsClient:self didLoginUser:responseObject];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if ([self.delegate respondsToSelector:@selector(TBARailsClient:didFailToLogin:)]) {
+            [self.delegate TBARailsClient:self didFailWithError:error];
+        }
+    }];
+}
+
 - (void)fetchUpcomingFights
 {
     [self GET:@"fights/future" parameters:@{@"session_token" : @"T8-5y3JoMpKqOd5HGPAAKg"} success:^(NSURLSessionDataTask *task, id responseObject) {

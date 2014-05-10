@@ -17,8 +17,7 @@
 + (TBATwitterClient *)sharedClient;
 - (instancetype)initWithBaseURL:(NSURL *)url;
 
-- (void)sendRequestForTwitterRequestToken;
-- (void)sendRequestForTwitterAccessToken;
+- (void)verify;
 
 
 @end
@@ -27,10 +26,8 @@
 
 @optional
 
-- (void)TBATwitterClient:(TBATwitterClient *)client didUpdateWithRequestToken:(id)token;
-- (void)TBATwitterClient:(TBATwitterClient *)client didUpdateWithAccessToken:(id)token;
-
-- (void)TBATwitterClient:(TBATwitterClient *)client didFailWithError:(NSError *)error;
+- (void)TBATwitterClient:(TBATwitterClient *)client didVerifyWithUserDictionary:(id)userDictionary;
+- (void)TBATwitterClient:(TBATwitterClient *)client didFailToVerifyWithError:(NSError *)error;
 
 @end
 

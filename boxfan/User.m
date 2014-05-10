@@ -8,8 +8,19 @@
 
 #import "User.h"
 #import "Auth.h"
+#import "TBARailsClient.h"
 
 @implementation User
+
+- (void)setIsLoggedIn:(BOOL)isLoggedIn
+{
+    _isLoggedIn = isLoggedIn;
+    if (isLoggedIn) {
+        if ([self.delegate respondsToSelector:@selector(currentUserLoggedin)]) {
+            [self.delegate currentUserLoggedin];
+        }
+    }
+}
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
@@ -89,6 +100,30 @@
     });
     
     return currentUser;
+}
+
+- (void)updateWithTwitterResponse:(NSDictionary *)response
+{
+    _handle = [response objectForKey:@"screen_name"];
+    _name = [response objectForKey:@"name"];
+    _profileImageURL = [response objectForKey:@"profile_image_url"];
+    _twitterID = [response objectForKey:@"id"];
+}
+
+-(void)signInWithBackend
+{
+    [TBARailsClient sharedClient].delegate = self;
+    NSDictionary *userDictionary = @{@"screen_name" : self.handle, @"name" : self.name, @"profile_image_url" : self.profileImageURL, @"id": self.twitterID, @"password" : [Auth encryptedKeyForUser:self]};
+    [[TBARailsClient sharedClient] signInWithBackend:userDictionary];
+}
+
+#pragma mark - TBARailsClient Delegate Methods
+
+- (void)TBARailsClient:(TBARailsClient *)client didLoginUser:(id)user
+{
+    _userID = [user valueForKeyPath:@"user.id"];
+    _sessionToken = [user valueForKeyPath:@"user.session_token"];
+    _isLoggedIn = YES;
 }
 
 @end

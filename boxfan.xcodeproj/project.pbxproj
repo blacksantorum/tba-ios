@@ -15,6 +15,7 @@
 		EC0D5B4918869543009B32B4 /* RecentFightNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D5B4818869543009B32B4 /* RecentFightNavController.m */; };
 		EC0D5B4C18869637009B32B4 /* RecentFightsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D5B4B18869637009B32B4 /* RecentFightsVC.m */; };
 		EC157F4B18A4883B008D72AE /* launchicon.PNG in Resources */ = {isa = PBXBuildFile; fileRef = EC157F4A18A4883B008D72AE /* launchicon.PNG */; };
+		EC2D73111915966A0090E112 /* TBALoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2D73101915966A0090E112 /* TBALoginVC.m */; };
 		EC374AA0188F42BE00C4343A /* FightInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC374A9F188F42BE00C4343A /* FightInfoCell.xib */; };
 		EC374AA3188F45FB00C4343A /* FightInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC374AA2188F45FB00C4343A /* FightInfoCell.m */; };
 		EC374AA5188F52E400C4343A /* PickInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC374AA4188F52E400C4343A /* PickInfoCell.xib */; };
@@ -384,6 +385,8 @@
 		EC0D5B4A18869637009B32B4 /* RecentFightsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentFightsVC.h; sourceTree = "<group>"; };
 		EC0D5B4B18869637009B32B4 /* RecentFightsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentFightsVC.m; sourceTree = "<group>"; };
 		EC157F4A18A4883B008D72AE /* launchicon.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchicon.PNG; sourceTree = "<group>"; };
+		EC2D730F1915966A0090E112 /* TBALoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBALoginVC.h; sourceTree = "<group>"; };
+		EC2D73101915966A0090E112 /* TBALoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBALoginVC.m; sourceTree = "<group>"; };
 		EC374A9F188F42BE00C4343A /* FightInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FightInfoCell.xib; sourceTree = "<group>"; };
 		EC374AA1188F45FB00C4343A /* FightInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FightInfoCell.h; sourceTree = "<group>"; };
 		EC374AA2188F45FB00C4343A /* FightInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FightInfoCell.m; sourceTree = "<group>"; };
@@ -1459,6 +1462,8 @@
 		ECD1151E187DF76D00530434 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EC2D730F1915966A0090E112 /* TBALoginVC.h */,
+				EC2D73101915966A0090E112 /* TBALoginVC.m */,
 				ECCA0A7D18970F4000403AFD /* User Display Controllers */,
 				ECCA0A8C18977CEA00403AFD /* Comments Display Controllers */,
 				ECC109E61887C641000B70CF /* FindUserVC.h */,
@@ -1907,6 +1912,7 @@
 				EC0D5B4C18869637009B32B4 /* RecentFightsVC.m in Sources */,
 				ECA2930918A370A8000DCDCE /* RecordCell.m in Sources */,
 				ECA15DE418964C8A0005E920 /* Profile.m in Sources */,
+				EC2D73111915966A0090E112 /* TBALoginVC.m in Sources */,
 				ECA1322E185FA8A500001793 /* Pick.m in Sources */,
 				EC4F532C191323C9004B54BE /* STTwitterOS.m in Sources */,
 				EC0D5B3E188542D3009B32B4 /* UpcomingFightNavController.m in Sources */,

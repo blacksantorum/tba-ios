@@ -18,4 +18,6 @@
 
 - (void)setNetworkActivityIndicatorVisible:(BOOL)setVisible;
 
+- (void)reverseAuthAndSignInViaParse;
+
 @end

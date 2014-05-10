@@ -17,6 +17,10 @@
 + (TBARailsClient *)sharedClient;
 - (instancetype)initWithBaseURL:(NSURL *)url;
 
+// TBALoginVC
+- (void)signInWithBackend:(NSDictionary *)dictionary;
+
+
 - (void)fetchUpcomingFights;
 - (void)fetchRecentFights;
 
@@ -25,6 +29,10 @@
 @protocol TBARailsClientDelegate <NSObject>
 
 @optional
+
+// TBALoginVC
+- (void)TBARailsClient:(TBARailsClient *)client didLoginUser:(id)user;
+- (void)TBARailsClient:(TBARailsClient *)client didFailToLogin:(NSError *)error;
 
 - (void)TBARailsClient:(TBARailsClient *)client didUpdateWithFights:(id)fights;
 - (void)TBARailsClient:(TBARailsClient *)client didFailWithError:(NSError *)error;

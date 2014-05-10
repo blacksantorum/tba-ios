@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="p7b-w2-bHg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="T0e-jZ-Tiw">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -99,6 +99,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZM-iI-Wze" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="33" y="691"/>
+        </scene>
+        <!--LoginVC-->
+        <scene sceneID="Ots-zg-eMn">
+            <objects>
+                <viewController id="T0e-jZ-Tiw" customClass="TBALoginVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xfM-ri-vS7"/>
+                        <viewControllerLayoutGuide type="bottom" id="gSV-Zt-Ov8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sRS-f4-Qbt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="0vf-LF-BwO">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="338"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Njl-K3-jFz">
+                                <rect key="frame" x="80" y="257" width="161" height="162"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zw-xP-EPl">
+                                <rect key="frame" x="20" y="421" width="280" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="-90" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Sign in with Twitter" image="twitterlogo"/>
+                                <connections>
+                                    <action selector="twitterButtonPressed:" destination="T0e-jZ-Tiw" eventType="touchUpInside" id="b1k-li-Scb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="twitterButton" destination="2zw-xP-EPl" id="SGj-3a-wGM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rWH-UI-Z5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-391" y="1066"/>
         </scene>
         <!--Recent Fight Nav Controller-->
         <scene sceneID="6CE-hI-8c7">
@@ -779,9 +821,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bg" width="320" height="338"/>
         <image name="comments" width="22" height="22"/>
         <image name="hamburger" width="22" height="22"/>
         <image name="history" width="22" height="22"/>
+        <image name="logo" width="300" height="300"/>
+        <image name="twitterlogo" width="25" height="20"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

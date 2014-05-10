@@ -16,6 +16,7 @@
 #import <AFNetworking/AFHTTPRequestOperationManager.h>
 #import "TBARailsClient.h"
 #import "TBATwitterClient.h"
+#import "STTwitterAPI.h"
 
 #define NavigationBarColor [UIColor colorWithRed:.170 green:.001 blue:.02 alpha:.8]
 
@@ -156,6 +157,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self doParseInitialization];
+    /*
+    [self doParseInitialization];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [[UINavigationBar appearance] setBarTintColor:NavigationBarColor];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
@@ -168,13 +171,51 @@
     
     if (![self encodedUserFromDefaults]) {
         [self showLogInView];
-    } else {
+        } else {
         [self setUpRevealController];
     }
     
-    [[TBATwitterClient sharedClient] sendRequestForTwitterRequestToken];
-    
+    */
     return YES;
+}
+
+- (void)reverseAuthAndSignInViaParse
+{
+    STTwitterAPI *twitter = [STTwitterAPI twitterAPIWithOAuthConsumerName:nil
+                                                              consumerKey:@"TK2igjpRfDN283wGr77Q"
+                                                           consumerSecret:@"0ju7zB7dl67YsReYmPosJKWVsUbTaLZFiM01CP8Fghs"];
+    
+    [twitter postReverseOAuthTokenRequest:^(NSString *authenticationHeader) {
+        
+        STTwitterAPI *twitterAPIOS = [STTwitterAPI twitterAPIOSWithFirstAccount];
+        
+        [twitterAPIOS verifyCredentialsWithSuccessBlock:^(NSString *username) {
+            
+            [twitterAPIOS postReverseAuthAccessTokenWithAuthenticationHeader:authenticationHeader
+                                                                successBlock:^(NSString *oAuthToken,
+                                                                               NSString *oAuthTokenSecret,
+                                                                               NSString *userID,
+                                                                               NSString *screenName) {
+                                                                    
+                                                                    [PFTwitterUtils logInWithTwitterId:userID screenName:screenName authToken:oAuthToken authTokenSecret:oAuthTokenSecret block:^(PFUser *user, NSError *error) {
+                                                                        User *boxingAppUser = [[User alloc] initWithDictionary:[self userDictionaryFromTwitter]];
+                                                                        
+                                                                        [self signInWithRails:boxingAppUser];
+                                                                        [self setUpRevealController];
+                                                                    }];
+                                                                    
+                                                                } errorBlock:^(NSError *error) {
+                                                                    NSLog(@"%@",error.localizedDescription);
+                                                                }];
+            
+        } errorBlock:^(NSError *error) {
+            NSLog(@"%@",error.localizedDescription);
+        }];
+        
+    } errorBlock:^(NSError *error) {
+        NSLog(@"%@",error.localizedDescription);
+    }];
+
 }
 
 - (void)logOut
