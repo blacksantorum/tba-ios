@@ -356,6 +356,13 @@
 		ECD11518187D497400530434 /* BoxingScheduleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD11517187D497400530434 /* BoxingScheduleVC.m */; };
 		ECD1151C187DEACD00530434 /* ScheduleFormattedDate.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD1151B187DEACD00530434 /* ScheduleFormattedDate.m */; };
 		ECD11526187E37DF00530434 /* FightDisplayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD11525187E37DF00530434 /* FightDisplayVC.m */; };
+		ECDA8251191EFFB600FF41C1 /* TBATabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDA8250191EFFB600FF41C1 /* TBATabBarController.m */; };
+		ECDA8257191F1DA600FF41C1 /* NSDictionary+CLT.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDA8256191F1DA600FF41C1 /* NSDictionary+CLT.m */; };
+		ECDA825B191F320F00FF41C1 /* FightsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDA825A191F320F00FF41C1 /* FightsViewController.m */; };
+		ECDA825E191F3A8500FF41C1 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECDA825D191F3A8500FF41C1 /* SDWebImage.framework */; };
+		ECDA8260191F3ACF00FF41C1 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECDA825F191F3ACF00FF41C1 /* ImageIO.framework */; };
+		ECDA8264191F3BAB00FF41C1 /* TBAFightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDA8263191F3BAB00FF41C1 /* TBAFightTableViewCell.m */; };
+		ECDA8267191F431300FF41C1 /* TBAFeaturedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDA8266191F431300FF41C1 /* TBAFeaturedVC.m */; };
 		ECE55DA31884B86900E02546 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE55DA11884B86900E02546 /* SidebarViewController.m */; };
 		ECE55DA41884B86900E02546 /* SidebarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECE55DA21884B86900E02546 /* SidebarViewController.xib */; };
 /* End PBXBuildFile section */
@@ -791,6 +798,18 @@
 		ECD1151B187DEACD00530434 /* ScheduleFormattedDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleFormattedDate.m; sourceTree = "<group>"; };
 		ECD11524187E37DF00530434 /* FightDisplayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FightDisplayVC.h; sourceTree = "<group>"; };
 		ECD11525187E37DF00530434 /* FightDisplayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FightDisplayVC.m; sourceTree = "<group>"; };
+		ECDA824F191EFFB600FF41C1 /* TBATabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBATabBarController.h; sourceTree = "<group>"; };
+		ECDA8250191EFFB600FF41C1 /* TBATabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBATabBarController.m; sourceTree = "<group>"; };
+		ECDA8255191F1DA600FF41C1 /* NSDictionary+CLT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+CLT.h"; sourceTree = "<group>"; };
+		ECDA8256191F1DA600FF41C1 /* NSDictionary+CLT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+CLT.m"; sourceTree = "<group>"; };
+		ECDA8259191F320F00FF41C1 /* FightsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FightsViewController.h; sourceTree = "<group>"; };
+		ECDA825A191F320F00FF41C1 /* FightsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FightsViewController.m; sourceTree = "<group>"; };
+		ECDA825D191F3A8500FF41C1 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
+		ECDA825F191F3ACF00FF41C1 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		ECDA8262191F3BAB00FF41C1 /* TBAFightTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBAFightTableViewCell.h; sourceTree = "<group>"; };
+		ECDA8263191F3BAB00FF41C1 /* TBAFightTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBAFightTableViewCell.m; sourceTree = "<group>"; };
+		ECDA8265191F431300FF41C1 /* TBAFeaturedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBAFeaturedVC.h; sourceTree = "<group>"; };
+		ECDA8266191F431300FF41C1 /* TBAFeaturedVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBAFeaturedVC.m; sourceTree = "<group>"; };
 		ECE55DA01884B86900E02546 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
 		ECE55DA11884B86900E02546 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
 		ECE55DA21884B86900E02546 /* SidebarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SidebarViewController.xib; sourceTree = "<group>"; };
@@ -801,6 +820,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECDA8260191F3ACF00FF41C1 /* ImageIO.framework in Frameworks */,
 				EC4F5334191323F8004B54BE /* Twitter.framework in Frameworks */,
 				EC4F5332191323EB004B54BE /* Accounts.framework in Frameworks */,
 				EC53740E18810AAA00DF16AB /* QuartzCore.framework in Frameworks */,
@@ -817,6 +837,7 @@
 				ECA0CE3E185E4EF8003380C5 /* UIKit.framework in Frameworks */,
 				ECA0CE3A185E4EF8003380C5 /* Foundation.framework in Frameworks */,
 				EC53741518810E4100DF16AB /* FacebookSDK.framework in Frameworks */,
+				ECDA825E191F3A8500FF41C1 /* SDWebImage.framework in Frameworks */,
 				C19AC8458FAD439FA2224948 /* libPods.a in Frameworks */,
 				EC5373FF18810A3200DF16AB /* Parse.framework in Frameworks */,
 			);
@@ -922,10 +943,10 @@
 		ECA0CE2D185E4EF8003380C5 = {
 			isa = PBXGroup;
 			children = (
+				ECDA8261191F3B2F00FF41C1 /* New Custom Cells */,
 				EC4F5306191323C9004B54BE /* STTwitter */,
 				ECC10A0C188E2F12000B70CF /* 32 */,
 				EC5373FE18810A3200DF16AB /* Parse.framework */,
-				EC53741418810E4100DF16AB /* FacebookSDK.framework */,
 				ECA0CE3F185E4EF8003380C5 /* boxfan */,
 				ECA0CE5E185E4EF9003380C5 /* boxfanTests */,
 				ECA0CE38185E4EF8003380C5 /* Frameworks */,
@@ -946,6 +967,9 @@
 		ECA0CE38185E4EF8003380C5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ECDA825F191F3ACF00FF41C1 /* ImageIO.framework */,
+				ECDA825D191F3A8500FF41C1 /* SDWebImage.framework */,
+				EC53741418810E4100DF16AB /* FacebookSDK.framework */,
 				EC4F5333191323F8004B54BE /* Twitter.framework */,
 				EC4F5331191323EB004B54BE /* Accounts.framework */,
 				EC53741218810C7800DF16AB /* Social.framework */,
@@ -970,6 +994,7 @@
 		ECA0CE3F185E4EF8003380C5 /* boxfan */ = {
 			isa = PBXGroup;
 			children = (
+				ECDA8258191F1EC600FF41C1 /* Categories */,
 				EC616784189273FA00E9843E /* Main.storyboard */,
 				EC57FA111910BD0D00CCEBD0 /* Networking */,
 				EC0D5B431885433D009B32B4 /* Nav Subclasses */,
@@ -1462,6 +1487,9 @@
 		ECD1151E187DF76D00530434 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				ECDA825C191F321700FF41C1 /* New VCs */,
+				ECDA824F191EFFB600FF41C1 /* TBATabBarController.h */,
+				ECDA8250191EFFB600FF41C1 /* TBATabBarController.m */,
 				EC2D730F1915966A0090E112 /* TBALoginVC.h */,
 				EC2D73101915966A0090E112 /* TBALoginVC.m */,
 				ECCA0A7D18970F4000403AFD /* User Display Controllers */,
@@ -1472,6 +1500,35 @@
 				ECA15D841895306D0005E920 /* List Of Fights View Controllers */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		ECDA8258191F1EC600FF41C1 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				ECDA8255191F1DA600FF41C1 /* NSDictionary+CLT.h */,
+				ECDA8256191F1DA600FF41C1 /* NSDictionary+CLT.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		ECDA825C191F321700FF41C1 /* New VCs */ = {
+			isa = PBXGroup;
+			children = (
+				ECDA8265191F431300FF41C1 /* TBAFeaturedVC.h */,
+				ECDA8266191F431300FF41C1 /* TBAFeaturedVC.m */,
+				ECDA8259191F320F00FF41C1 /* FightsViewController.h */,
+				ECDA825A191F320F00FF41C1 /* FightsViewController.m */,
+			);
+			name = "New VCs";
+			sourceTree = "<group>";
+		};
+		ECDA8261191F3B2F00FF41C1 /* New Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				ECDA8262191F3BAB00FF41C1 /* TBAFightTableViewCell.h */,
+				ECDA8263191F3BAB00FF41C1 /* TBAFightTableViewCell.m */,
+			);
+			name = "New Custom Cells";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1868,6 +1925,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECDA8257191F1DA600FF41C1 /* NSDictionary+CLT.m in Sources */,
 				ECD11514187D466E00530434 /* BoxingAppDVC.m in Sources */,
 				ECC109E018878994000B70CF /* FindUserNavController.m in Sources */,
 				EC4F5324191323C9004B54BE /* NSDateFormatter+STTwitter.m in Sources */,
@@ -1879,6 +1937,7 @@
 				ECC109E81887C641000B70CF /* FindUserVC.m in Sources */,
 				ECA0CE76185E59BF003380C5 /* Fight.m in Sources */,
 				ECA0CE4A185E4EF9003380C5 /* boxfanAppDelegate.m in Sources */,
+				ECDA8264191F3BAB00FF41C1 /* TBAFightTableViewCell.m in Sources */,
 				EC4F5327191323C9004B54BE /* STHTTPRequest+STTwitter.m in Sources */,
 				EC96EC9318A1C49800AD894D /* Reachability.m in Sources */,
 				EC537418188227AC00DF16AB /* Auth.m in Sources */,
@@ -1904,6 +1963,7 @@
 				EC4C0202189FABF800310CF8 /* NoCommentsCell.m in Sources */,
 				ECC10A04188D31B5000B70CF /* UserActivity.m in Sources */,
 				ECCA0A821897181E00403AFD /* FOYCell.m in Sources */,
+				ECDA825B191F320F00FF41C1 /* FightsViewController.m in Sources */,
 				EC4F532D191323C9004B54BE /* STTwitterOSRequest.m in Sources */,
 				ECD11518187D497400530434 /* BoxingScheduleVC.m in Sources */,
 				ECD1151C187DEACD00530434 /* ScheduleFormattedDate.m in Sources */,
@@ -1927,9 +1987,11 @@
 				ECCA0A951897CFBC00403AFD /* UserActivityCell.m in Sources */,
 				EC81026218949BC60092B7DB /* MostJabbedCommentsDisplayVC.m in Sources */,
 				EC0D5B461886126D009B32B4 /* LeftButtonNavController.m in Sources */,
+				ECDA8251191EFFB600FF41C1 /* TBATabBarController.m in Sources */,
 				ECA0CE73185E5818003380C5 /* Boxer.m in Sources */,
 				EC08517518CD9E35000FC69A /* MyCommentCell.m in Sources */,
 				EC374AD2188F9BDE00C4343A /* JSONDataNullCheck.m in Sources */,
+				ECDA8267191F431300FF41C1 /* TBAFeaturedVC.m in Sources */,
 				ECA15D7E189507C70005E920 /* ListOfFightsVC.m in Sources */,
 				EC4F532B191323C9004B54BE /* STTwitterOAuth.m in Sources */,
 				EC4F532A191323C9004B54BE /* STTwitterHTML.m in Sources */,
@@ -2059,7 +2121,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/christibbs/Documents/the\\ problem/boxfan",
+					/Users/christibbs/Documents/the,
+					problem/boxfan,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "boxfan/boxfan-Prefix.pch";
@@ -2080,7 +2144,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/christibbs/Documents/the\\ problem/boxfan",
+					/Users/christibbs/Documents/the,
+					problem/boxfan,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "boxfan/boxfan-Prefix.pch";

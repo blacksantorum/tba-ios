@@ -41,14 +41,14 @@ static NSString * const TBARailsURLString = @"http://www.theboxingapp.com/api/";
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if ([self.delegate respondsToSelector:@selector(TBARailsClient:didFailToLogin:)]) {
-            [self.delegate TBARailsClient:self didFailWithError:error];
+            [self.delegate TBARailsClient:self didFailToLogin:error];
         }
     }];
 }
 
 - (void)fetchUpcomingFights
 {
-    [self GET:@"fights/future" parameters:@{@"session_token" : @"T8-5y3JoMpKqOd5HGPAAKg"} success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self GET:@"fights/future" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([self.delegate respondsToSelector:@selector(TBARailsClient:didUpdateWithFights:)]) {
             [self.delegate TBARailsClient:self didUpdateWithFights:responseObject];
         }
@@ -61,7 +61,7 @@ static NSString * const TBARailsURLString = @"http://www.theboxingapp.com/api/";
 
 - (void)fetchRecentFights
 {
-    [self GET:@"fights/past" parameters:@{@"session_token" : @"T8-5y3JoMpKqOd5HGPAAKg"} success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self GET:@"fights/past" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([self.delegate respondsToSelector:@selector(TBARailsClient:didUpdateWithFights:)]) {
             [self.delegate TBARailsClient:self didUpdateWithFights:responseObject];
         }
@@ -72,5 +72,60 @@ static NSString * const TBARailsURLString = @"http://www.theboxingapp.com/api/";
     }];
 }
 
+/////////////////////////OVERRIDE GET AND POST REQUESTS TO ADD SESSION TOKEN ///////////////////////////////////////
+
+- (NSURLSessionDataTask *)GET:(NSString *)URLString
+                   parameters:(NSDictionary *)parameters
+                      success:(void (^)(NSURLSessionDataTask *, id))success
+                      failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
+{
+    NSMutableDictionary *mutableParams = [NSMutableDictionary dictionaryWithDictionary:parameters];
+    if ([User getCurrentUser].isLoggedIn) {
+        NSDictionary *dictionary = @{@"session_token" : [User getCurrentUser].sessionToken};
+        if (!mutableParams) {
+            mutableParams = [NSMutableDictionary dictionaryWithDictionary:dictionary];
+        } else {
+            [mutableParams addEntriesFromDictionary:dictionary];
+        }
+    }
+    return [super GET:URLString parameters:mutableParams success:success failure:failure];
+}
+
+- (NSURLSessionDataTask *)POST:(NSString *)URLString
+                    parameters:(NSDictionary *)parameters
+                       success:(void (^)(NSURLSessionDataTask *, id))success
+                       failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
+{
+    NSMutableDictionary *mutableParams = [NSMutableDictionary dictionaryWithDictionary:parameters];
+    if ([User getCurrentUser].isLoggedIn) {
+        NSDictionary *dictionary = @{@"session_token" : [User getCurrentUser].sessionToken};
+        if (!mutableParams) {
+            mutableParams = [NSMutableDictionary dictionaryWithDictionary:dictionary];
+        } else {
+            [mutableParams addEntriesFromDictionary:dictionary];
+        }
+    }
+     NSLog(@"%@", mutableParams);
+    return [super POST:URLString parameters:mutableParams success:success failure:failure];
+
+}
+
+- (NSURLSessionDataTask *)DELETE:(NSString *)URLString
+                      parameters:(NSDictionary *)parameters
+                         success:(void (^)(NSURLSessionDataTask *, id))success
+                         failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
+{
+    NSMutableDictionary *mutableParams = [NSMutableDictionary dictionaryWithDictionary:parameters];
+    if ([User getCurrentUser].isLoggedIn) {
+        NSDictionary *dictionary = @{@"session_token" : [User getCurrentUser].sessionToken};
+        if (!mutableParams) {
+            mutableParams = [NSMutableDictionary dictionaryWithDictionary:dictionary];
+        } else {
+            [mutableParams addEntriesFromDictionary:dictionary];
+        }
+    }
+    return [super DELETE:URLString parameters:mutableParams success:success failure:failure];
+
+}
 
 @end

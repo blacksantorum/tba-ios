@@ -59,6 +59,7 @@
     [encoder encodeObject:self.profileImageURL forKey:@"profileImageURL"];
     [encoder encodeObject:self.userID forKey:@"userID"];
     [encoder encodeObject:self.twitterID forKey:@"twitterID"];
+    [encoder encodeObject:self.sessionToken forKey:@"sessionToken"];
 }
 
 -(instancetype)initWithCoder:(NSCoder *)decoder
@@ -70,6 +71,7 @@
         _profileImageURL = [decoder decodeObjectForKey:@"profileImageURL"];
         _userID = [decoder decodeObjectForKey:@"userID"];
         _twitterID = [decoder decodeObjectForKey:@"twitterID"];
+        _sessionToken = [decoder decodeObjectForKey:@"sessionToken"];
     }
     
     return self;
@@ -82,7 +84,7 @@
 
 -(NSString *)description
 {
-    return [NSString stringWithFormat:@"%@ %@ %@ %@",self.userID,self.handle,self.name,self.profileImageURL];
+    return [NSString stringWithFormat:@"%@ %@ %@ %@ %@" ,self.userID,self.handle,self.name,self.profileImageURL,self.twitterID];
 }
 
 - (BOOL)isEqualToUser:(User *)user
@@ -117,13 +119,41 @@
     [[TBARailsClient sharedClient] signInWithBackend:userDictionary];
 }
 
+-(void)saveCurrrentUserInDefaults
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSData *encodedUser = [NSKeyedArchiver archivedDataWithRootObject:[User getCurrentUser]];
+    [defaults setObject:encodedUser forKey:@"User"];
+    [defaults synchronize];
+}
+
+- (void)updateCurrentUserWithEncodedUser:(NSData *)encodedUser
+{
+    User *currentUser = [User getCurrentUser];
+    User *user = (User *)[NSKeyedUnarchiver unarchiveObjectWithData:encodedUser];
+    currentUser.handle = user.handle;
+    currentUser.name = user.name;
+    currentUser.profileImageURL = user.profileImageURL;
+    currentUser.userID = user.userID;
+    currentUser.twitterID = user.twitterID;
+    currentUser.sessionToken = user.sessionToken;
+}
+
 #pragma mark - TBARailsClient Delegate Methods
 
 - (void)TBARailsClient:(TBARailsClient *)client didLoginUser:(id)user
 {
+    NSLog(@"Returned user: %@", user);
     _userID = [user valueForKeyPath:@"user.id"];
     _sessionToken = [user valueForKeyPath:@"user.session_token"];
-    _isLoggedIn = YES;
+    [self saveCurrrentUserInDefaults];
+    self.isLoggedIn = YES;
+}
+
+- (void)TBARailsClient:(TBARailsClient *)client didFailToLogin:(NSError *)error
+{
+    NSLog(@"User error block: %@",error.localizedDescription);
 }
 
 @end

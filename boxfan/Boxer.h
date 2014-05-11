@@ -16,6 +16,7 @@
 @property (nonatomic,strong) NSString *country;
 @property (nonatomic,strong) NSString *decisionPercentage;
 @property (nonatomic,strong) NSString *pickPercentage;
+@property (nonatomic, strong) NSString *thumbnailPictureURL;
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 -(instancetype)initWithRecentFightVewDictionary:(NSDictionary *)dictionary;

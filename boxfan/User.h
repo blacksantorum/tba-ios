@@ -43,6 +43,8 @@
 - (void)updateWithTwitterResponse:(NSDictionary *)response;
 
 - (void)signInWithBackend;
+- (void)updateCurrentUserWithEncodedUser:(NSData *)encodedUser;
+
 
 @property id<TBAUserLoginDelegate> delegate;
 

@@ -4,24 +4,58 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Boxing ScheduleVC - Upcoming-->
+        <!--FeaturedVC - Upcoming-->
         <scene sceneID="Itr-p8-mst">
             <objects>
-                <tableViewController id="ebC-K2-dnc" customClass="BoxingScheduleVC" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cKM-tu-9f9">
+                <tableViewController id="ebC-K2-dnc" customClass="TBAFeaturedVC" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="85" sectionHeaderHeight="22" sectionFooterHeight="22" id="cKM-tu-9f9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexTrackingBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="List Of Fights Cell" id="t7m-Bf-u14" customClass="ListOfFightsCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Fight Cell" rowHeight="85" id="t7m-Bf-u14" customClass="TBAFightTableViewCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="85"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t7m-Bf-u14" id="PqK-PN-ELa">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="F. Mayweather" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2R-VF-E1H">
+                                            <rect key="frame" x="0.0" y="58" width="160" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wg9-he-Eih">
+                                            <rect key="frame" x="58" y="14" width="44" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bbe-Nb-FpE">
+                                            <rect key="frame" x="218" y="14" width="44" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="M. Maidana" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWr-Rr-vPd">
+                                            <rect key="frame" x="160" y="58" width="160" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="vs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4PB-5y-BA9">
+                                            <rect key="frame" x="110" y="25" width="100" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="fighterANameLabel" destination="Y2R-VF-E1H" id="XDF-sm-ZK3"/>
+                                    <outlet property="fighterAPictureImageView" destination="wg9-he-Eih" id="hgr-w4-eAK"/>
+                                    <outlet property="fighterBNameLabel" destination="NWr-Rr-vPd" id="2eY-JP-ZI8"/>
+                                    <outlet property="fighterBPictureImageView" destination="bbe-Nb-FpE" id="Kt1-XF-ohq"/>
+                                    <outlet property="resultLabel" destination="4PB-5y-BA9" id="V2a-7D-tQd"/>
                                     <segue destination="gLn-cC-fO6" kind="push" identifier="upcomingFightDetail" id="a6a-Rd-PIc"/>
                                 </connections>
                             </tableViewCell>
@@ -31,17 +65,11 @@
                             <outlet property="delegate" destination="ebC-K2-dnc" id="kU1-O7-Eom"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Upcoming" id="fol-a3-Zr4">
-                        <barButtonItem key="leftBarButtonItem" image="hamburger" id="f1u-RR-Tbg">
-                            <connections>
-                                <action selector="userClickedShowSettings:" destination="ebC-K2-dnc" id="L0w-fi-79x"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Upcoming" id="fol-a3-Zr4"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fw9-kR-liQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="559" y="691"/>
+            <point key="canvasLocation" x="465" y="37"/>
         </scene>
         <!--Recent FightsVC - Recent-->
         <scene sceneID="pdE-dh-3PJ">
@@ -79,12 +107,34 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nJs-mD-l7o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="567" y="1510"/>
+            <point key="canvasLocation" x="465" y="710"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Gic-H0-T3k">
+            <objects>
+                <tabBarController definesPresentationContext="YES" id="yQi-Kw-KfH" customClass="TBATabBarController" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="vsJ-PL-gVB">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="p7b-w2-bHg" kind="relationship" relationship="viewControllers" id="kQc-YB-igk"/>
+                        <segue destination="dtx-er-eBA" kind="relationship" relationship="viewControllers" id="KAT-Tk-Fab"/>
+                        <segue destination="kP7-j1-bPT" kind="relationship" relationship="viewControllers" id="3Jr-2V-B5H"/>
+                        <segue destination="lxx-8N-KZt" kind="relationship" relationship="viewControllers" id="qr7-Ig-MgN"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uyr-WE-sM5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-542" y="1086"/>
         </scene>
         <!--Upcoming Fight Nav Controller-->
         <scene sceneID="dd4-fT-8lm">
             <objects>
                 <navigationController storyboardIdentifier="ScheduleNav" automaticallyAdjustsScrollViewInsets="NO" id="p7b-w2-bHg" customClass="UpcomingFightNavController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" id="1pm-Y7-UYp"/>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9sS-k3-5AN">
@@ -98,7 +148,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZM-iI-Wze" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="33" y="691"/>
+            <point key="canvasLocation" x="31" y="37"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="Ots-zg-eMn">
@@ -117,11 +167,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Njl-K3-jFz">
-                                <rect key="frame" x="80" y="257" width="161" height="162"/>
+                                <rect key="frame" x="80" y="255" width="161" height="162"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zw-xP-EPl">
-                                <rect key="frame" x="20" y="421" width="280" height="36"/>
+                                <rect key="frame" x="20" y="396" width="280" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25098039220000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -136,16 +186,18 @@
                     </view>
                     <connections>
                         <outlet property="twitterButton" destination="2zw-xP-EPl" id="SGj-3a-wGM"/>
+                        <segue destination="yQi-Kw-KfH" kind="modal" identifier="enterApp" id="Vqq-xZ-kre"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rWH-UI-Z5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-391" y="1066"/>
+            <point key="canvasLocation" x="-957" y="1086"/>
         </scene>
         <!--Recent Fight Nav Controller-->
         <scene sceneID="6CE-hI-8c7">
             <objects>
                 <navigationController storyboardIdentifier="RecentNav" automaticallyAdjustsScrollViewInsets="NO" id="dtx-er-eBA" customClass="RecentFightNavController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="history" id="VXz-O1-68m"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ovd-RQ-rnq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -158,7 +210,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d9k-7D-qOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="41" y="1510"/>
+            <point key="canvasLocation" x="31" y="710"/>
         </scene>
         <!--Find UserVC - Find User-->
         <scene sceneID="NT0-JF-zWL">
@@ -231,12 +283,13 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="567" y="2282"/>
+            <point key="canvasLocation" x="465" y="1410"/>
         </scene>
         <!--Find User Nav Controller-->
         <scene sceneID="pWF-qM-dbY">
             <objects>
                 <navigationController storyboardIdentifier="FindUserNav" automaticallyAdjustsScrollViewInsets="NO" id="kP7-j1-bPT" customClass="FindUserNavController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="search" id="dJb-h4-UbJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3qR-kv-xlG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -249,7 +302,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hmd-XU-met" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="41" y="2282"/>
+            <point key="canvasLocation" x="31" y="1410"/>
         </scene>
         <!--Upcoming Fight View Controller-->
         <scene sceneID="tR6-ON-qgM">
@@ -357,7 +410,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pvo-9h-2Y3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="989" y="691"/>
+            <point key="canvasLocation" x="869" y="37"/>
         </scene>
         <!--Most Jabbed Comments DisplayVC-->
         <scene sceneID="VJn-r6-bO4">
@@ -394,7 +447,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DP2-M5-D8P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1493" y="740"/>
+            <point key="canvasLocation" x="1393" y="385"/>
         </scene>
         <!--Recent Fight Display View Controller-->
         <scene sceneID="9Gc-jf-pZQ">
@@ -506,7 +559,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ncd-8X-1Jw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1010" y="1510"/>
+            <point key="canvasLocation" x="869" y="710"/>
         </scene>
         <!--User Profile Controller-->
         <scene sceneID="jST-m4-q59">
@@ -568,7 +621,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCB-5C-5cu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1534" y="1476"/>
+            <point key="canvasLocation" x="869" y="1410"/>
         </scene>
         <!--User History TableVC-->
         <scene sceneID="8FI-Cb-yap">
@@ -579,7 +632,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Filter by name of boxer" id="2Db-xH-ltN">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -588,7 +641,7 @@
                         </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="User Activity Cell" id="GdD-9T-SXq">
-                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GdD-9T-SXq" id="Dai-xC-6f6">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -618,7 +671,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2070" y="1786"/>
+            <point key="canvasLocation" x="1360" y="1410"/>
         </scene>
         <!--User Profile Controller-->
         <scene sceneID="5Fm-Mc-69J">
@@ -683,7 +736,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7jl-Fa-Rga" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1534" y="2202"/>
+            <point key="canvasLocation" x="465" y="2134"/>
         </scene>
         <!--Update Profile View Controller-->
         <scene sceneID="Sex-Od-Ow9">
@@ -799,12 +852,13 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1984" y="2484"/>
+            <point key="canvasLocation" x="972" y="2134"/>
         </scene>
-        <!--My Profile Nav Controller-->
+        <!--My Profile Nav Controller - Me-->
         <scene sceneID="V3l-2c-FfE">
             <objects>
                 <navigationController storyboardIdentifier="MyProfileNav" automaticallyAdjustsScrollViewInsets="NO" id="lxx-8N-KZt" customClass="MyProfileNavController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Me" id="iMc-3e-yyf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4ey-5h-t6V">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -817,7 +871,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xsl-hz-xc4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1030" y="2248"/>
+            <point key="canvasLocation" x="31" y="2134"/>
         </scene>
     </scenes>
     <resources>
@@ -835,6 +889,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="TrW-5U-ZxQ"/>
-        <segue reference="ZhA-Vh-E1K"/>
+        <segue reference="jEJ-ht-Fff"/>
     </inferredMetricsTieBreakers>
 </document>

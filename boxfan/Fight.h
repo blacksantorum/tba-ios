@@ -9,6 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "Boxer.h"
 
+typedef enum {
+    TBAFightStateUpcoming,
+    TBAFightStateInProgress,
+    TBAFightStateDraw,
+    TBAFightStateKO,
+    TBAFightStateDecision
+} TBAFightState;
+
 @interface Fight : NSObject
 
 @property (nonatomic,strong) NSString *fightID;
@@ -18,6 +26,7 @@
 @property (nonatomic, strong) NSArray  *boxers;
 @property (nonatomic, strong) NSString *rounds;
 @property (nonatomic,strong) NSNumber *winnerID;
+@property (nonatomic) TBAFightState state;
 
 @property BOOL stoppage;
 

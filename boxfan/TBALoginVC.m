@@ -8,12 +8,13 @@
 
 #import "TBALoginVC.h"
 #import "STTwitterAPI.h"
+#import "User.h"
 #import <Parse/Parse.h>
 
 #define TWITTER_CONSUMER_KEY @"TK2igjpRfDN283wGr77Q"
 #define TWITTER_CONSUMER_SECRET @"0ju7zB7dl67YsReYmPosJKWVsUbTaLZFiM01CP8Fghs"
 
-@interface TBALoginVC ()
+@interface TBALoginVC () <TBAUserLoginDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *twitterButton;
 
@@ -23,25 +24,27 @@
 
 @implementation TBALoginVC
 
+- (void)currentUserLoggedin
+{
+    [self performSegueWithIdentifier:@"enterApp" sender:self];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.twitterButton.layer.cornerRadius = 6.0;
-    /*
-    CAGradientLayer *alphaGradientLayer = [CAGradientLayer layer];
-    NSArray *colors = [NSArray arrayWithObjects:
-                       (id)[[UIColor colorWithWhite:0 alpha:0] CGColor],
-                       (id)[[UIColor colorWithWhite:0 alpha:1] CGColor],
-                       nil];
-    [alphaGradientLayer setColors:colors];
-    
-    // Start the gradient at the bottom and go almost half way up.
-    [alphaGradientLayer setStartPoint:CGPointMake(0.0f, 1.0f)];
-    [alphaGradientLayer setEndPoint:CGPointMake(0.0f, 0.6f)];
-    
-    [alphaGradientLayer setFrame:[self.twitterButton bounds]];
-    [[self.twitterButton layer] setMask:alphaGradientLayer];
-     */
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [User getCurrentUser].delegate = self;
+    if ([self encodedUserFromDefaults]) {
+        NSData *encodedUser = [self encodedUserFromDefaults];
+        [[User getCurrentUser] updateCurrentUserWithEncodedUser:encodedUser];
+        [User getCurrentUser].isLoggedIn = YES;
+    }
+
 }
 
 
@@ -59,6 +62,14 @@
 - (IBAction)twitterButtonPressed:(id)sender {
     [self reverseAuth];
 }
+        
+- (NSData *)encodedUserFromDefaults
+{
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        return [defaults objectForKey:@"User"];
+}
+        
+#pragma mark - Twitter sign in, backend sign in
 
 - (void)reverseAuth
 {
@@ -126,9 +137,9 @@
     
     NSDictionary* result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
     
-    NSLog(@"%@",result);
     [[User getCurrentUser] updateWithTwitterResponse:result];
-    
+    // NSLog(@"%@", [User getCurrentUser]);
+    [[User getCurrentUser] signInWithBackend];
 }
 
 @end
