@@ -13,7 +13,11 @@
 		EC0D5B3E188542D3009B32B4 /* UpcomingFightNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D5B3D188542D3009B32B4 /* UpcomingFightNavController.m */; };
 		EC0D5B461886126D009B32B4 /* LeftButtonNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D5B451886126D009B32B4 /* LeftButtonNavController.m */; };
 		EC0D5B4918869543009B32B4 /* RecentFightNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D5B4818869543009B32B4 /* RecentFightNavController.m */; };
-		EC0D5B4C18869637009B32B4 /* RecentFightsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D5B4B18869637009B32B4 /* RecentFightsVC.m */; };
+		EC0E22B8191F60F70080A840 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0E22B7191F60F70080A840 /* libGoogleAnalyticsServices.a */; };
+		EC0E22BA191F61400080A840 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0E22B9191F61400080A840 /* AdSupport.framework */; };
+		EC0E22BC191F61490080A840 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0E22BB191F61490080A840 /* CoreData.framework */; };
+		EC0E22BE191F615F0080A840 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0E22BD191F615F0080A840 /* libz.dylib */; };
+		EC0E22C0191F62730080A840 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0E22BF191F62730080A840 /* libsqlite3.dylib */; };
 		EC157F4B18A4883B008D72AE /* launchicon.PNG in Resources */ = {isa = PBXBuildFile; fileRef = EC157F4A18A4883B008D72AE /* launchicon.PNG */; };
 		EC2D73111915966A0090E112 /* TBALoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2D73101915966A0090E112 /* TBALoginVC.m */; };
 		EC374AA0188F42BE00C4343A /* FightInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC374A9F188F42BE00C4343A /* FightInfoCell.xib */; };
@@ -87,7 +91,6 @@
 		ECA0CE76185E59BF003380C5 /* Fight.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA0CE75185E59BF003380C5 /* Fight.m */; };
 		ECA1322B185FA64E00001793 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA1322A185FA64E00001793 /* User.m */; };
 		ECA1322E185FA8A500001793 /* Pick.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA1322D185FA8A500001793 /* Pick.m */; };
-		ECA15D7E189507C70005E920 /* ListOfFightsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA15D7D189507C70005E920 /* ListOfFightsVC.m */; };
 		ECA15D8018951B770005E920 /* ListOfFightsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA15D7F18951B770005E920 /* ListOfFightsCell.xib */; };
 		ECA15D8318951BAF0005E920 /* ListOfFightsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA15D8218951BAF0005E920 /* ListOfFightsCell.m */; };
 		ECA15DE418964C8A0005E920 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA15DE318964C8A0005E920 /* Profile.m */; };
@@ -353,7 +356,6 @@
 		ECCA0A951897CFBC00403AFD /* UserActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA0A941897CFBC00403AFD /* UserActivityCell.m */; };
 		ECCA0A981898DEB500403AFD /* UserHistoryTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA0A971898DEB500403AFD /* UserHistoryTableVC.m */; };
 		ECD11514187D466E00530434 /* BoxingAppDVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD11513187D466E00530434 /* BoxingAppDVC.m */; };
-		ECD11518187D497400530434 /* BoxingScheduleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD11517187D497400530434 /* BoxingScheduleVC.m */; };
 		ECD1151C187DEACD00530434 /* ScheduleFormattedDate.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD1151B187DEACD00530434 /* ScheduleFormattedDate.m */; };
 		ECD11526187E37DF00530434 /* FightDisplayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD11525187E37DF00530434 /* FightDisplayVC.m */; };
 		ECDA8251191EFFB600FF41C1 /* TBATabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDA8250191EFFB600FF41C1 /* TBATabBarController.m */; };
@@ -389,8 +391,17 @@
 		EC0D5B451886126D009B32B4 /* LeftButtonNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftButtonNavController.m; path = boxfan/LeftButtonNavController.m; sourceTree = "<group>"; };
 		EC0D5B4718869543009B32B4 /* RecentFightNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentFightNavController.h; sourceTree = "<group>"; };
 		EC0D5B4818869543009B32B4 /* RecentFightNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentFightNavController.m; sourceTree = "<group>"; };
-		EC0D5B4A18869637009B32B4 /* RecentFightsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentFightsVC.h; sourceTree = "<group>"; };
-		EC0D5B4B18869637009B32B4 /* RecentFightsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentFightsVC.m; sourceTree = "<group>"; };
+		EC0E22B0191F60620080A840 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		EC0E22B1191F60620080A840 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		EC0E22B2191F60620080A840 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		EC0E22B3191F60620080A840 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		EC0E22B4191F60620080A840 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		EC0E22B5191F60620080A840 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		EC0E22B7191F60F70080A840 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		EC0E22B9191F61400080A840 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		EC0E22BB191F61490080A840 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		EC0E22BD191F615F0080A840 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		EC0E22BF191F62730080A840 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		EC157F4A18A4883B008D72AE /* launchicon.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchicon.PNG; sourceTree = "<group>"; };
 		EC2D730F1915966A0090E112 /* TBALoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBALoginVC.h; sourceTree = "<group>"; };
 		EC2D73101915966A0090E112 /* TBALoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBALoginVC.m; sourceTree = "<group>"; };
@@ -508,8 +519,6 @@
 		ECA1322A185FA64E00001793 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		ECA1322C185FA8A500001793 /* Pick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pick.h; sourceTree = "<group>"; };
 		ECA1322D185FA8A500001793 /* Pick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pick.m; sourceTree = "<group>"; };
-		ECA15D7C189507C70005E920 /* ListOfFightsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListOfFightsVC.h; sourceTree = "<group>"; };
-		ECA15D7D189507C70005E920 /* ListOfFightsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListOfFightsVC.m; sourceTree = "<group>"; };
 		ECA15D7F18951B770005E920 /* ListOfFightsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListOfFightsCell.xib; sourceTree = "<group>"; };
 		ECA15D8118951BAF0005E920 /* ListOfFightsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListOfFightsCell.h; sourceTree = "<group>"; };
 		ECA15D8218951BAF0005E920 /* ListOfFightsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListOfFightsCell.m; sourceTree = "<group>"; };
@@ -792,8 +801,6 @@
 		ECCA0A971898DEB500403AFD /* UserHistoryTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHistoryTableVC.m; sourceTree = "<group>"; };
 		ECD11512187D466E00530434 /* BoxingAppDVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxingAppDVC.h; sourceTree = "<group>"; };
 		ECD11513187D466E00530434 /* BoxingAppDVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxingAppDVC.m; sourceTree = "<group>"; };
-		ECD11516187D497400530434 /* BoxingScheduleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxingScheduleVC.h; sourceTree = "<group>"; };
-		ECD11517187D497400530434 /* BoxingScheduleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxingScheduleVC.m; sourceTree = "<group>"; };
 		ECD1151A187DEACD00530434 /* ScheduleFormattedDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleFormattedDate.h; sourceTree = "<group>"; };
 		ECD1151B187DEACD00530434 /* ScheduleFormattedDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleFormattedDate.m; sourceTree = "<group>"; };
 		ECD11524187E37DF00530434 /* FightDisplayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FightDisplayVC.h; sourceTree = "<group>"; };
@@ -820,6 +827,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC0E22C0191F62730080A840 /* libsqlite3.dylib in Frameworks */,
+				EC0E22B8191F60F70080A840 /* libGoogleAnalyticsServices.a in Frameworks */,
+				EC0E22BE191F615F0080A840 /* libz.dylib in Frameworks */,
+				EC0E22BC191F61490080A840 /* CoreData.framework in Frameworks */,
+				EC0E22BA191F61400080A840 /* AdSupport.framework in Frameworks */,
 				ECDA8260191F3ACF00FF41C1 /* ImageIO.framework in Frameworks */,
 				EC4F5334191323F8004B54BE /* Twitter.framework in Frameworks */,
 				EC4F5332191323EB004B54BE /* Accounts.framework in Frameworks */,
@@ -872,6 +884,20 @@
 			);
 			name = "Nav Subclasses";
 			path = ..;
+			sourceTree = "<group>";
+		};
+		EC0E22B6191F60690080A840 /* Google analytics */ = {
+			isa = PBXGroup;
+			children = (
+				EC0E22B7191F60F70080A840 /* libGoogleAnalyticsServices.a */,
+				EC0E22B0191F60620080A840 /* GAI.h */,
+				EC0E22B1191F60620080A840 /* GAIDictionaryBuilder.h */,
+				EC0E22B2191F60620080A840 /* GAIFields.h */,
+				EC0E22B3191F60620080A840 /* GAILogger.h */,
+				EC0E22B4191F60620080A840 /* GAITrackedViewController.h */,
+				EC0E22B5191F60620080A840 /* GAITracker.h */,
+			);
+			name = "Google analytics";
 			sourceTree = "<group>";
 		};
 		EC4F5306191323C9004B54BE /* STTwitter */ = {
@@ -943,6 +969,7 @@
 		ECA0CE2D185E4EF8003380C5 = {
 			isa = PBXGroup;
 			children = (
+				EC0E22B6191F60690080A840 /* Google analytics */,
 				ECDA8261191F3B2F00FF41C1 /* New Custom Cells */,
 				EC4F5306191323C9004B54BE /* STTwitter */,
 				ECC10A0C188E2F12000B70CF /* 32 */,
@@ -967,6 +994,10 @@
 		ECA0CE38185E4EF8003380C5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EC0E22BF191F62730080A840 /* libsqlite3.dylib */,
+				EC0E22BD191F615F0080A840 /* libz.dylib */,
+				EC0E22BB191F61490080A840 /* CoreData.framework */,
+				EC0E22B9191F61400080A840 /* AdSupport.framework */,
 				ECDA825F191F3ACF00FF41C1 /* ImageIO.framework */,
 				ECDA825D191F3A8500FF41C1 /* SDWebImage.framework */,
 				EC53741418810E4100DF16AB /* FacebookSDK.framework */,
@@ -1071,10 +1102,6 @@
 		ECA15D841895306D0005E920 /* List Of Fights View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				EC0D5B4A18869637009B32B4 /* RecentFightsVC.h */,
-				EC0D5B4B18869637009B32B4 /* RecentFightsVC.m */,
-				ECD11516187D497400530434 /* BoxingScheduleVC.h */,
-				ECD11517187D497400530434 /* BoxingScheduleVC.m */,
 			);
 			name = "List Of Fights View Controllers";
 			sourceTree = "<group>";
@@ -1459,8 +1486,6 @@
 				ECD11525187E37DF00530434 /* FightDisplayVC.m */,
 				ECD11512187D466E00530434 /* BoxingAppDVC.h */,
 				ECD11513187D466E00530434 /* BoxingAppDVC.m */,
-				ECA15D7C189507C70005E920 /* ListOfFightsVC.h */,
-				ECA15D7D189507C70005E920 /* ListOfFightsVC.m */,
 			);
 			name = Abstract;
 			sourceTree = "<group>";
@@ -1965,11 +1990,9 @@
 				ECCA0A821897181E00403AFD /* FOYCell.m in Sources */,
 				ECDA825B191F320F00FF41C1 /* FightsViewController.m in Sources */,
 				EC4F532D191323C9004B54BE /* STTwitterOSRequest.m in Sources */,
-				ECD11518187D497400530434 /* BoxingScheduleVC.m in Sources */,
 				ECD1151C187DEACD00530434 /* ScheduleFormattedDate.m in Sources */,
 				EC0D5B4918869543009B32B4 /* RecentFightNavController.m in Sources */,
 				EC374AD61890891D00C4343A /* RecentFightDisplayViewController.m in Sources */,
-				EC0D5B4C18869637009B32B4 /* RecentFightsVC.m in Sources */,
 				ECA2930918A370A8000DCDCE /* RecordCell.m in Sources */,
 				ECA15DE418964C8A0005E920 /* Profile.m in Sources */,
 				EC2D73111915966A0090E112 /* TBALoginVC.m in Sources */,
@@ -1992,7 +2015,6 @@
 				EC08517518CD9E35000FC69A /* MyCommentCell.m in Sources */,
 				EC374AD2188F9BDE00C4343A /* JSONDataNullCheck.m in Sources */,
 				ECDA8267191F431300FF41C1 /* TBAFeaturedVC.m in Sources */,
-				ECA15D7E189507C70005E920 /* ListOfFightsVC.m in Sources */,
 				EC4F532B191323C9004B54BE /* STTwitterOAuth.m in Sources */,
 				EC4F532A191323C9004B54BE /* STTwitterHTML.m in Sources */,
 				EC374AA3188F45FB00C4343A /* FightInfoCell.m in Sources */,
@@ -2128,6 +2150,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "boxfan/boxfan-Prefix.pch";
 				INFOPLIST_FILE = "boxfan/boxfan-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "Boxing App";
 				PROVISIONING_PROFILE = "E68B6AFE-6C69-492E-A8AF-A28D48E5AA79";
 				WRAPPER_EXTENSION = app;
@@ -2151,6 +2177,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "boxfan/boxfan-Prefix.pch";
 				INFOPLIST_FILE = "boxfan/boxfan-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "Boxing App";
 				PROVISIONING_PROFILE = "E68B6AFE-6C69-492E-A8AF-A28D48E5AA79";
 				WRAPPER_EXTENSION = app;

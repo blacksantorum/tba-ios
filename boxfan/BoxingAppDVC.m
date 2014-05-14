@@ -10,7 +10,6 @@
 #import "URLS.h"
 #import <Parse/Parse.h>
 #import <PKRevealController/PKRevealController.h>
-#import "BoxingScheduleVC.h"
 #import "boxfanAppDelegate.h"
 
 @interface BoxingAppDVC ()

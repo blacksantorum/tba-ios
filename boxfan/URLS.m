@@ -31,7 +31,7 @@
     boxfanAppDelegate *appDelegate = (boxfanAppDelegate *)[[UIApplication sharedApplication] delegate];
     return appDelegate.prod;
 }
-
+/*
 +(NSString *)urlStringForPostingPickForFight:(Fight *)fight
 {
     return [URLS appendSessionToken:[NSString stringWithFormat:@"%@/fights/%@/picks", [URLS prod] ? PROD_BASE_URL : TEST_BASE_URL,fight.fightID.description]];
@@ -126,5 +126,5 @@
 {
     return [NSURL URLWithString:@"http://www.theboxingapp.com/auth/twitter"];
 }
-
+*/
 @end

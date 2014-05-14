@@ -25,7 +25,7 @@
        
         _fight = [[Fight alloc] initWithUserHistoryDictionary:[dictionary valueForKey:@"fight"]];
         
-        NSString *winnerID = [dictionary valueForKey:@"winner_id"];
+        NSInteger winnerID = [[dictionary valueForKey:@"winner_id"] integerValue];
         
         NSString *koObj = [dictionary valueForKeyPath:@"ko"];
         NSString *ko = koObj.description;
@@ -37,7 +37,7 @@
         
         for (NSDictionary *boxerDict in [dictionary valueForKeyPath:@"fight.boxers"]) {
             Boxer *boxer = [[Boxer alloc] initWithDictionary:[boxerDict valueForKey:@"boxer"]];
-            if ([boxer.boxerID.description isEqualToString:winnerID.description]) {
+            if (boxer.boxerID == winnerID) {
                 _winner = boxer;
             } else {
                 _loser = boxer;
@@ -63,11 +63,11 @@
         
         _fight = [[Fight alloc] initWithUserHistoryDictionary:[dictionary valueForKey:@"fight"]];
         
-        NSString *winnerID = [dictionary valueForKey:@"winner_id"];
+        NSInteger winnerID = [[dictionary valueForKey:@"winner_id"] integerValue];
         
         for (NSDictionary *boxerDict in [dictionary valueForKeyPath:@"fight.boxers"]) {
             Boxer *boxer = [[Boxer alloc] initWithDictionary:[boxerDict valueForKey:@"boxer"]];
-            if ([boxer.boxerID.description isEqualToString:winnerID.description]) {
+            if (boxer.boxerID == winnerID) {
                 _winner = boxer;
             } else {
                 _loser = boxer;

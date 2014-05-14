@@ -13,7 +13,7 @@
 
 @interface Pick : NSObject
 
-@property (nonatomic, strong) NSString *pickID;
+@property (nonatomic) NSInteger pickID;
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) Fight *fight;
 @property (nonatomic,strong) Boxer *winner;

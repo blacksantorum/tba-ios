@@ -10,7 +10,7 @@
 
 @interface Boxer : NSObject
 
-@property (nonatomic,strong) NSString *boxerID;
+@property (nonatomic) NSInteger boxerID;
 @property (nonatomic,strong) NSString *firstName;
 @property (nonatomic,strong) NSString *lastName;
 @property (nonatomic,strong) NSString *country;
@@ -22,5 +22,7 @@
 -(instancetype)initWithRecentFightVewDictionary:(NSDictionary *)dictionary;
 
 -(NSString *)boxerFullName;
+
+- (BOOL)isEqualToBoxer:(Boxer *)boxer;
 
 @end

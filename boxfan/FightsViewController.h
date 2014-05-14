@@ -15,4 +15,10 @@
 - (void)TBARailsClient:(TBARailsClient *)client didUpdateWithFights:(id)fights;
 - (void)TBARailsClient:(TBARailsClient *)client didFailWithError:(NSError *)error;
 
+- (void)startSpinner;
+- (void)stopSpinner;
+
+- (void)sortDatesDescending;
+- (void)sortDatesAscending;
+
 @end

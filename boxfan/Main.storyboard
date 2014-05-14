@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--FeaturedVC - Upcoming-->
+        <!--FeaturedVC-->
         <scene sceneID="Itr-p8-mst">
             <objects>
                 <tableViewController id="ebC-K2-dnc" customClass="TBAFeaturedVC" sceneMemberID="viewController">
@@ -13,6 +13,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexTrackingBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="PgW-5G-4va">
+                            <rect key="frame" x="0.0" y="171" width="320" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Fight Cell" rowHeight="85" id="t7m-Bf-u14" customClass="TBAFightTableViewCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="85"/>
@@ -65,16 +70,19 @@
                             <outlet property="delegate" destination="ebC-K2-dnc" id="kU1-O7-Eom"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Upcoming" id="fol-a3-Zr4"/>
+                    <navigationItem key="navigationItem" id="fol-a3-Zr4"/>
+                    <connections>
+                        <outlet property="spinner" destination="PgW-5G-4va" id="GB9-pt-NgQ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fw9-kR-liQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="465" y="37"/>
         </scene>
-        <!--Recent FightsVC - Recent-->
+        <!--FeaturedVC - Recent-->
         <scene sceneID="pdE-dh-3PJ">
             <objects>
-                <tableViewController id="8BP-kc-eea" customClass="RecentFightsVC" sceneMemberID="viewController">
+                <tableViewController id="8BP-kc-eea" customClass="TBAFeaturedVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RLW-7z-ykR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -130,11 +138,11 @@
             </objects>
             <point key="canvasLocation" x="-542" y="1086"/>
         </scene>
-        <!--Upcoming Fight Nav Controller-->
+        <!--Upcoming Fight Nav Controller - Upcoming-->
         <scene sceneID="dd4-fT-8lm">
             <objects>
                 <navigationController storyboardIdentifier="ScheduleNav" automaticallyAdjustsScrollViewInsets="NO" id="p7b-w2-bHg" customClass="UpcomingFightNavController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" id="1pm-Y7-UYp"/>
+                    <tabBarItem key="tabBarItem" title="Upcoming" image="upcoming_unselected" id="1pm-Y7-UYp"/>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9sS-k3-5AN">
@@ -155,8 +163,8 @@
             <objects>
                 <viewController id="T0e-jZ-Tiw" customClass="TBALoginVC" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xfM-ri-vS7"/>
-                        <viewControllerLayoutGuide type="bottom" id="gSV-Zt-Ov8"/>
+                        <viewControllerLayoutGuide type="top" id="5Ve-U4-6Ut"/>
+                        <viewControllerLayoutGuide type="bottom" id="wwj-Cd-jkO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sRS-f4-Qbt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -193,11 +201,11 @@
             </objects>
             <point key="canvasLocation" x="-957" y="1086"/>
         </scene>
-        <!--Recent Fight Nav Controller-->
+        <!--Recent Fight Nav Controller - Recent-->
         <scene sceneID="6CE-hI-8c7">
             <objects>
                 <navigationController storyboardIdentifier="RecentNav" automaticallyAdjustsScrollViewInsets="NO" id="dtx-er-eBA" customClass="RecentFightNavController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="history" id="VXz-O1-68m"/>
+                    <tabBarItem key="tabBarItem" title="Recent" image="recent_unselected" id="VXz-O1-68m"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ovd-RQ-rnq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -285,11 +293,11 @@
             </objects>
             <point key="canvasLocation" x="465" y="1410"/>
         </scene>
-        <!--Find User Nav Controller-->
+        <!--Find User Nav Controller - Find Users-->
         <scene sceneID="pWF-qM-dbY">
             <objects>
                 <navigationController storyboardIdentifier="FindUserNav" automaticallyAdjustsScrollViewInsets="NO" id="kP7-j1-bPT" customClass="FindUserNavController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="search" id="dJb-h4-UbJ"/>
+                    <tabBarItem key="tabBarItem" title="Find Users" image="find_user_unselected" id="dJb-h4-UbJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3qR-kv-xlG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -309,8 +317,8 @@
             <objects>
                 <viewController id="gLn-cC-fO6" customClass="UpcomingFightViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="N5J-pf-CTD"/>
-                        <viewControllerLayoutGuide type="bottom" id="OT7-D9-lim"/>
+                        <viewControllerLayoutGuide type="top" id="8tC-Ir-aXJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="sld-oY-wOa"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BSs-4A-Pjo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -454,8 +462,8 @@
             <objects>
                 <viewController id="ygf-qg-PiG" customClass="RecentFightDisplayViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="WSk-8k-Gz1"/>
-                        <viewControllerLayoutGuide type="bottom" id="kYQ-v3-clE"/>
+                        <viewControllerLayoutGuide type="top" id="YVj-4u-k84"/>
+                        <viewControllerLayoutGuide type="bottom" id="Z1P-1Q-J7S"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aHY-k1-Iv0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -566,8 +574,8 @@
             <objects>
                 <viewController storyboardIdentifier="userProfile" id="lN2-m5-3K4" customClass="UserProfileController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="lbb-pi-WxG"/>
-                        <viewControllerLayoutGuide type="bottom" id="EXe-DI-q62"/>
+                        <viewControllerLayoutGuide type="top" id="x42-dj-eHL"/>
+                        <viewControllerLayoutGuide type="bottom" id="koZ-fA-IXI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5Q1-E5-vQ6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -678,8 +686,8 @@
             <objects>
                 <viewController id="AnY-wL-I9D" customClass="UserProfileController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Rbm-N8-F59"/>
-                        <viewControllerLayoutGuide type="bottom" id="na0-rm-fRd"/>
+                        <viewControllerLayoutGuide type="top" id="48Q-Z1-R7n"/>
+                        <viewControllerLayoutGuide type="bottom" id="aoQ-gQ-Jr9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="A8H-2h-QEj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -743,8 +751,8 @@
             <objects>
                 <viewController storyboardIdentifier="updateProfile" id="bv2-5R-1R5" customClass="UpdateProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7WT-5J-Blc"/>
-                        <viewControllerLayoutGuide type="bottom" id="NhV-CT-f1a"/>
+                        <viewControllerLayoutGuide type="top" id="EC5-Vb-WKm"/>
+                        <viewControllerLayoutGuide type="bottom" id="L0n-SL-rFb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EOJ-tN-iM2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -858,7 +866,7 @@
         <scene sceneID="V3l-2c-FfE">
             <objects>
                 <navigationController storyboardIdentifier="MyProfileNav" automaticallyAdjustsScrollViewInsets="NO" id="lxx-8N-KZt" customClass="MyProfileNavController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Me" id="iMc-3e-yyf"/>
+                    <tabBarItem key="tabBarItem" title="Me" image="me_unselected" id="iMc-3e-yyf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4ey-5h-t6V">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -877,10 +885,14 @@
     <resources>
         <image name="bg" width="320" height="338"/>
         <image name="comments" width="22" height="22"/>
+        <image name="find_user_unselected" width="31" height="29"/>
         <image name="hamburger" width="22" height="22"/>
         <image name="history" width="22" height="22"/>
         <image name="logo" width="300" height="300"/>
+        <image name="me_unselected" width="25" height="31"/>
+        <image name="recent_unselected" width="28" height="24"/>
         <image name="twitterlogo" width="25" height="20"/>
+        <image name="upcoming_unselected" width="22" height="24"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

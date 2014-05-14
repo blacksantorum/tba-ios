@@ -15,9 +15,8 @@
     self = [super init];
     if (self) {
         _decisionID = [dictionary objectForKey:@"id"];
-        NSString *winnerID = [dictionary objectForKey:@"winner_id"];
         _winner = [[Boxer alloc] init];
-        _winner.boxerID = winnerID.description;
+        _winner.boxerID = [[dictionary objectForKey:@"winner_id"] integerValue];
     }
     
     return self;
@@ -29,14 +28,14 @@
     if (self) {
         _decisionID = [dictionary valueForKeyPath:@"decision.id"];
         Fight *fight = [[Fight alloc] init];
-        fight.fightID = [dictionary valueForKeyPath:@"decision.fight_id"];
+        fight.fightID = [[dictionary valueForKeyPath:@"decision.fight_id"]integerValue];
         _fight = fight;
         
-        NSString *winnerID = [dictionary valueForKeyPath:@"decision.winner_id"];
+        NSInteger winnerID = [[dictionary valueForKeyPath:@"decision.winner_id"] integerValue];
         
         for (NSDictionary *boxerDict in [dictionary valueForKeyPath:@"decision.fight.boxers"]) {
             Boxer *b = [[Boxer alloc] initWithDictionary:[boxerDict valueForKey:@"boxer"]];
-            if ([b.boxerID.description isEqualToString:winnerID.description]) {
+            if (b.boxerID == winnerID) {
                 _winner = b;
             } else {
                 _loser = b;

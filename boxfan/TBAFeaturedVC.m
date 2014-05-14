@@ -16,6 +16,7 @@
 
 - (void)fetchFights
 {
+    [self startSpinner];
     [[TBARailsClient sharedClient] fetchUpcomingFights];
 }
 
@@ -25,6 +26,9 @@
 - (void)TBARailsClient:(TBARailsClient *)client didUpdateWithFights:(id)fights
 {
     [super TBARailsClient:client didUpdateWithFights:fights];
+    [self sortDatesAscending];
+    [self stopSpinner];
+    [self.tableView reloadData];
 }
 
 @end

@@ -11,7 +11,7 @@
 
 @interface Decision : NSObject
 
-@property (nonatomic,strong) NSString *decisionID;
+@property (nonatomic) NSInteger decisionID;
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) Fight *fight;
 @property (nonatomic,strong) Boxer *winner;

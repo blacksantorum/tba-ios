@@ -126,7 +126,7 @@
 - (void)makeSignedRequestToTwitterAndLoginWithResult
 {
     NSString *twitterScreenName = [PFTwitterUtils twitter].screenName;
-    NSURL *verify = [NSURL URLWithString:[URLS urlStringForUsersTwitterWithScreenname:twitterScreenName]];
+    NSURL *verify = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitter.com/1.1/users/show.json?screen_name=%@", twitterScreenName]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:verify];
     [[PFTwitterUtils twitter] signRequest:request];
     NSURLResponse *response = nil;

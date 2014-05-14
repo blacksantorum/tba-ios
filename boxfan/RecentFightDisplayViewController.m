@@ -92,7 +92,7 @@
         decision.fight = self.fight;
         decision.winner = decidedBoxer;
         
-        if ([decidedBoxer.boxerID.description isEqualToString:self.fight.boxerA.boxerID.description]) {
+        if (decidedBoxer.boxerID == self.fight.boxerA.boxerID) {
             decision.loser = self.fight.boxerB;
         } else {
             decision.loser = self.fight.boxerA;
@@ -120,11 +120,11 @@
                 break;
         }
     };
-    
+    /*
     [tweetSheet setInitialText:[NSString stringWithFormat:@"%@ is my new Fight of the Year! #TBA",self.fight.titleForScheduleView]];
     
     [tweetSheet addURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://theboxingapp.com/fights/%@",self.fight.fightID.description]]];
-    
+    */
     [self presentViewController:tweetSheet animated:YES completion:nil];
 }
 
@@ -148,14 +148,14 @@
     [tweetSheet setInitialText:[NSString stringWithFormat:@"I thought %@ beat %@ #TBA",decision.winner.boxerFullName,decision.loser.boxerFullName]];
     
     
-    [tweetSheet addURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://theboxingapp.com/fights/%@",self.fight.fightID.description]]];
+    [tweetSheet addURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://theboxingapp.com/fights/%ld",(long)self.fight.fightID]]];
     
     [self presentViewController:tweetSheet animated:YES completion:nil];
 }
 
 -(NSDictionary *)postDictionaryForDeciding:(Boxer *)boxer
 {
-    return @{@"decision":@{@"winner_id": boxer.boxerID}};
+    return @{@"decision":@{@"winner_id": [NSNumber numberWithInteger:boxer.boxerID]}};
 }
 
 -(void)postUserActivityDictionary:(NSDictionary *)dictionary toURLString:(NSString *)url

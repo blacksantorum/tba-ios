@@ -142,7 +142,7 @@
     cell.dateLabel.text = [ScheduleFormattedDate sectionHeaderFormattedStringFromDate:self.fight.date];
     cell.locationLabel.text = self.fight.location;
 
-    cell.roundsWeightLabel.text = [NSString stringWithFormat:@"%@ rounds at %@",self.fight.rounds,[self.fight.weight.description isEqualToString:@"0"] ? @"200+":self.fight.weight];
+    cell.roundsWeightLabel.text = [NSString stringWithFormat:@"%ld rounds at %@",(long)self.fight.rounds, (self.fight.weight == 0) ? @"200+":[NSString stringWithFormat:@"%ld",(long)self.fight.weight]];
     cell.fight = self.fight;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -172,14 +172,14 @@
         cell.currentPickDescriptionLabel.text = @"";
     }
     
-    if (![self.fight.winnerID.description isEqualToString:@"-100"]) {
+    if (!self.fight.winnerID == -100) {
         [cell.makePickButton removeFromSuperview];
         if (!self.pick) {
             cell.yourPickLabel.text = @"";
         } else {
             cell.yourPickLabel.text = @"Your pick:";
             
-            if (![self.pick.winner.boxerID.description isEqualToString:self.fight.winnerID.description] && ![self.fight.winnerID.description isEqualToString:@"-1"]) {
+            if (!self.pick.winner.boxerID == self.fight.winnerID && !self.fight.winnerID == -1) {
                 NSMutableAttributedString *wrongPick = [[NSMutableAttributedString alloc] initWithString:[self currentPickDescriptionLabelRepresentationForPick:self.pick]attributes:@{NSStrikethroughStyleAttributeName:
                                                                                                                                                             [NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
             
@@ -304,6 +304,7 @@
 
 -(void)configureDataSource
 {
+    /*
     NSDictionary *pickDictionary = self.JSONdictionary;
     self.pick = [[Pick alloc] initWithFightViewDictionary:pickDictionary];
     
@@ -314,7 +315,7 @@
         self.decision.fight = self.fight;
         self.decision.user = self.loggedInUser;
         for (Boxer *b in self.fight.boxers) {
-            if ([b.boxerID.description isEqualToString:self.decision.winner.boxerID.description]) {
+            if ([b.boxerID == self.decision.winner.boxerID) {
                 self.decision.winner = b;
             } else {
                 self.decision.loser = b;
@@ -348,7 +349,7 @@
     self.comments = [commentsArray sortedArrayUsingSelector:@selector(compare:)];
      
     [self.fightInfoTableView reloadData];
-
+     */
 }
 
 - (void)viewDidLoad
@@ -374,13 +375,13 @@
     self.boxerBFirstNameLabel.text = self.fight.boxerB.firstName;
     self.boxerBLastNameLabel.text = self.fight.boxerB.lastName;
     
-    if (![self.fight.winnerID.description isEqualToString:@"-100"] && ![self.fight.winnerID.description isEqualToString:@"0"] && ![self.fight.winnerID.description isEqualToString:@"-1"]) {
+    if (!self.fight.winnerID == -100 && !self.fight.winnerID == 0 && !self.fight.winnerID == -1) {
         if (self.fight.stoppage) {
             self.resultLabel.text = @"KO";
         } else {
             self.resultLabel.text = @"def.";
         }
-    } else if ([self.fight.winnerID.description isEqualToString:@"0"]) {
+    } else if (self.fight.winnerID == 0) {
         self.resultLabel.text = @"drew";
     }
     else {
@@ -424,7 +425,7 @@
     }
     else if (section == 2)
     {
-        return [NSString stringWithFormat:@"Predictions (%d)",self.picksCount];
+        return [NSString stringWithFormat:@"Predictions (%ld)",(long)self.picksCount];
     }
     else
     {
@@ -449,11 +450,11 @@
             [cell.FOYButton removeFromSuperview];
         }
         if ([self isKindOfClass:[RecentFightDisplayViewController class]]) {
-            if ([self.fight.fightID.description isEqualToString:self.loggedInUser.foy.fightID.description]) {
-                [cell.FOYButton setTitle:@"This is your FOY" forState:UIControlStateNormal];
-                [cell.FOYButton setTitle:@"This is your FOY" forState:UIControlStateDisabled];
-                cell.FOYButton.enabled = NO;
-            }
+            // if ([self.fight.fightID.description isEqualToString:self.loggedInUser.foy.fightID.description]) {
+              //  [cell.FOYButton setTitle:@"This is your FOY" forState:UIControlStateNormal];
+               // [cell.FOYButton setTitle:@"This is your FOY" forState:UIControlStateDisabled];
+               // cell.FOYButton.enabled = NO;
+            //}
         }
         return cell;
     }
@@ -515,7 +516,7 @@
         return 66.0;
     } else {
         if (([[UIScreen mainScreen] bounds].size.height-568)) {
-            if (![self.fight.winnerID.description isEqualToString:@"-100"] && ![self.fight.winnerID.description isEqualToString:@"-1"]) {
+            if (!self.fight.winnerID == -100 && !self.fight.winnerID == -1) {
                 if (self.fight.stoppage) {
                     if (indexPath.section == 2) {
                         return 326.0;

@@ -66,17 +66,13 @@
     [self.fighterBPictureImageView setImageWithURL:[NSURL URLWithString:_fight.boxerB.thumbnailPictureURL]
                                   placeholderImage:[UIImage imageNamed:@"placeholder"]];
     [self.fighterBNameLabel setText:[self displayNameForBoxer:_fight.boxerB]];
+    
 }
 
 - (NSString *)displayNameForBoxer:(Boxer *)boxer
 {
-    return [NSString stringWithFormat:@"%@. %@",boxer.firstName,boxer.lastName];
-}
-
-- (void)layoutSubviews
-{
-    self.fighterAPictureImageView.layer.cornerRadius = 22.0;
-    self.fighterBPictureImageView.layer.cornerRadius = 22.0;
+    NSString *firstInitial = [NSString stringWithFormat:@"%@", [boxer.firstName substringToIndex:1]];
+    return [NSString stringWithFormat:@"%@. %@",firstInitial,boxer.lastName];
 }
 
 @end

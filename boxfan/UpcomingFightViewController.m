@@ -59,7 +59,7 @@
         pick.fight = self.fight;
         pick.winner = pickedBoxer;
         
-        if ([pickedBoxer.boxerID.description isEqualToString:self.fight.boxerA.boxerID.description]) {
+        if (pickedBoxer.boxerID == self.fight.boxerA.boxerID) {
             pick.loser = self.fight.boxerB;
         } else {
             pick.loser = self.fight.boxerA;
@@ -92,14 +92,14 @@
     
     [tweetSheet setInitialText:[NSString stringWithFormat:@"I'm picking %@ over %@ %@ #TBA",pick.winner.boxerFullName,pick.loser.boxerFullName, (pick.byStoppage) ? @"by KO" : @"by decision"]];
     
-    [tweetSheet addURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://theboxingapp.com/fights/%@",self.fight.fightID.description]]];
+    [tweetSheet addURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://theboxingapp.com/fights/%ld",(long)self.fight.fightID]]];
     
     [self presentViewController:tweetSheet animated:YES completion:nil];
 }
 
 -(NSDictionary *)postDictionaryForPicking:(Boxer *)boxer byKO:(BOOL)ko
 {
-    return @{@"pick":@{@"winner_id": boxer.boxerID, @"ko":[self stringForBool:ko]}};
+    return @{@"pick":@{@"winner_id": [NSNumber numberWithInteger:boxer.boxerID], @"ko":[self stringForBool:ko]}};
 }
 
 -(NSString *)stringForBool:(BOOL)boolean

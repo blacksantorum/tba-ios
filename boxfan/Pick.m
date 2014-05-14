@@ -25,7 +25,7 @@
             
             NSString *winnerID = [dictionary valueForKeyPath:@"fight.pick.winner_id"];
             Boxer *b = [boxerArray firstObject];
-            
+            /*
             if ([b.boxerID.description  isEqualToString:winnerID.description]) {
                 _winner = b;
                 _loser = [boxerArray lastObject];
@@ -33,6 +33,7 @@
                 _winner = [boxerArray lastObject];
                 _loser = b;
             }
+            */
             
             NSString *koObj = [dictionary valueForKeyPath:@"fight.pick.ko"];
             NSString *ko = koObj.description;
@@ -64,7 +65,7 @@
         NSString *winnerID = [dictionary valueForKeyPath:@"pick.winner_id"];
 
         Boxer *b = [boxerArray firstObject];
-        
+        /*
         if ([b.boxerID.description  isEqualToString:winnerID.description]) {
             _winner = b;
             _loser = [boxerArray lastObject];
@@ -72,7 +73,7 @@
             _winner = [boxerArray lastObject];
             _loser = b;
         }
-        
+        */
         Fight *fight = [[Fight alloc] initWithDictionary:[dictionary valueForKeyPath:@"pick.fight"]];
         _fight = fight;
     }
@@ -124,6 +125,7 @@
 {
     self = [super init];
     if (self) {
+        /*
         _pickID = [dictionary valueForKeyPath:@"pick.id"];
         Fight *fight = [[Fight alloc] init];
         fight.fightID = [dictionary valueForKeyPath:@"pick.fight_id"];
@@ -139,7 +141,7 @@
                 _loser = b;
             }
         }
-        
+        */
     }
     return self;
 }

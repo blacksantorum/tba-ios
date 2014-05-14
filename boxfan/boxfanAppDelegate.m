@@ -11,12 +11,12 @@
 #import "TBALoginViewController.h"
 #import "Auth.h"
 #import <PKRevealController/PKRevealController.h>
-#import "BoxingScheduleVC.h"
 #import "BoxFanRevealController.h"
 #import <AFNetworking/AFHTTPRequestOperationManager.h>
 #import "TBARailsClient.h"
 #import "TBATwitterClient.h"
 #import "STTwitterAPI.h"
+#import "GAI.h"
 
 #define NavigationBarColor [UIColor colorWithRed:.170 green:.001 blue:.02 alpha:.8]
 
@@ -67,7 +67,7 @@
     NSDictionary *parameters = user.userDictionaryForSignIn;
     [manager POST:[URLS urlStringForRailsSignIn] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *userDictionary = responseObject;
-        user.userID = [userDictionary valueForKeyPath:@"user.id"];
+        user.userID = [[userDictionary valueForKeyPath:@"user.id"] integerValue];
         NSString *token = [userDictionary valueForKeyPath:@"user.session_token"];
         [self saveUserInDefaults:user withSessionToken:token];
         [self setUpRevealController];
@@ -157,6 +157,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self doParseInitialization];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navbar"] forBarMetrics:UIBarMetricsDefault];
+    [[UITabBar appearance] setTintColor:NavigationBarColor];
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    [GAI sharedInstance].dispatchInterval = 20;
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-50859137-1"];
     /*
     [self doParseInitialization];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

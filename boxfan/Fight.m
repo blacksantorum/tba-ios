@@ -7,6 +7,7 @@
 //
 
 #import "Fight.h"
+#import "NSDictionary+CLT.h"
 
 @interface Fight() {
     NSDictionary *_dictionary;
@@ -18,140 +19,67 @@
 
 -(NSString *)description
 {
-    return [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@",self.fightID,self.date,self.weight,self.location,self.rounds,self.winnerID,self.stoppage ? @"KO" : @"decision"];
+    return [NSString stringWithFormat:@"%ld,%@,%ld,%@,%ld,%ld,%@",(long)self.fightID,self.date,(long)self.weight,self.location,(long)self.rounds,(long)self.winnerID,self.stoppage ? @"KO" : @"decision"];
 }
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
     self = [super init];
     if (self) {
-        _dictionary = dictionary;
+        // get the meat of the fight dictionary, with null values purged
+        NSDictionary *fightDict = [(NSDictionary *)[dictionary objectForKey:@"fight"] dictionaryWithoutNullValues];
+        
+        _fightID = [[fightDict objectForKey:@"id"] integerValue];
+        _winnerID = [[fightDict objectForKey:@"winner_id"] integerValue];
+        _stoppage = [[fightDict objectForKey:@"stoppage"] boolValue];
+        
+        if (_winnerID == -100) {
+            _state = TBAFightStateUpcoming;
+        }
+        else if (_winnerID == -1) {
+            _state = TBAFightStateInProgress;
+        }
+        else if (_winnerID == 0) {
+            _state = TBAFightStateDraw;
+        }
+        else
+        {
+            if (_stoppage) {
+                _state = TBAFightStateKO;
+            } else {
+                _state = TBAFightStateDecision;
+            }
+        }
+        
+        // if the fight is over, set the Winner to be boxerA
+        if (_state == TBAFightStateDecision || _state == TBAFightStateKO) {
+            for (NSDictionary *boxerDict in [fightDict objectForKey:@"boxers"]) {
+                Boxer *b = [[Boxer alloc] initWithDictionary:boxerDict];
+                if (b.boxerID == _winnerID) {
+                    _boxerA = b;
+                } else {
+                    _boxerB = b;
+                }
+            }
+        } else {
+            NSArray *boxers = [fightDict objectForKey:@"boxers"];
+            _boxerA = [[Boxer alloc] initWithDictionary:[boxers firstObject]];
+            _boxerB = [[Boxer alloc] initWithDictionary:[boxers lastObject]];
+        }
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
         [formatter setDateFormat:@"yyyy-MM-dd"];
-        NSDate *date = [formatter dateFromString:[dictionary objectForKey:@"date"]];
-        
-        _fightID = [dictionary objectForKey:@"id"];
+        NSDate *date = [formatter dateFromString:[fightDict objectForKey:@"date"]];
         _date = date;
-        _weight = [dictionary objectForKey:@"weight"];
+        
+        _weight = [[dictionary objectForKey:@"weight"] integerValue];
         _location = [dictionary objectForKey:@"location"];
         
-       // NSArray *boxers = [dictionary objectForKey:@"boxers"];
-        
-       // _boxers = boxers;
-        _rounds = [dictionary objectForKey:@"rounds"];
-        _winnerID = [dictionary objectForKey:@"winner_id"];
-        
-        NSString *stoppageNumber = [dictionary objectForKey:@"stoppage"];
-        if (![stoppageNumber isKindOfClass:[NSNull class]]) {
-            if ([stoppageNumber.description isEqualToString:@"1"]) {
-                self.stoppage = YES;
-            } else {
-                self.stoppage = NO;
-            }
-        }
+        _rounds = [[dictionary objectForKey:@"rounds"] integerValue];
     }
     return self;
 }
 
-- (instancetype)initWithUserHistoryDictionary:(NSDictionary *)dictionary
-{
-    self = [[Fight alloc] initWithDictionary:dictionary];
-    NSMutableArray *boxerArray = [[NSMutableArray alloc] init];
-    for (NSDictionary *boxerDict in [dictionary valueForKey:@"boxers"]) {
-        Boxer *b = [[Boxer alloc] initWithDictionary:[boxerDict valueForKey:@"boxer"]];
-        [boxerArray addObject:b];
-    }
-    self.boxers = boxerArray;
-    return self;
-}
 
-- (instancetype)initWithFOYDictionary:(NSDictionary *)dictionary
-{
-    self = [super init];
-    if (self) {
-        _fightID = [dictionary objectForKey:@"id"];
-        NSString *stoppage = [dictionary objectForKey:@"stoppage"];
-        _stoppage = [stoppage.description isEqualToString:@"1"] ? YES : NO;
-        
-        NSMutableArray *boxerArray = [[NSMutableArray alloc] init];
-        for (NSDictionary *boxerDict in [dictionary valueForKey:@"boxers"]) {
-            Boxer *b = [[Boxer alloc] initWithDictionary:boxerDict];
-            [boxerArray addObject:b];
-        }
-        _boxers = boxerArray;
-        _winnerID = [dictionary objectForKey:@"winner_id"];
-    }
-    
-    return self;
-}
-
--(Boxer *)boxerA
-{
-    Boxer *boxerA;
-    
-    if ([self.winnerID.description isEqualToString:@"-100"] || [self.winnerID.description isEqualToString:@"0"] || [self.winnerID.description isEqualToString:@"-1"]) {
-        boxerA = [self.boxers firstObject];
-    } else {
-        for (Boxer *b in self.boxers) {
-            if ([b.boxerID.description isEqualToString:self.winnerID.description])
-                boxerA = b;
-        }
-    }
-    
-    return boxerA;
-}
-
--(Boxer *)boxerB
-{
-    Boxer *boxerB;
-    
-    if ([self.winnerID.description isEqualToString:@"-100"] || [self.winnerID.description isEqualToString:@"0"] || [self.winnerID.description isEqualToString:@"-1"]) {
-        boxerB = [self.boxers lastObject];
-    } else {
-        for (Boxer *b in self.boxers) {
-            if (![b.boxerID.description isEqualToString:self.winnerID.description])
-                boxerB = b;
-        }
-    }
-    
-    return boxerB;
-}
-
--(NSString *)titleForScheduleView
-{
-    NSString *title = [[NSString alloc] init];
-    
-    Boxer *aSide = [self.boxers objectAtIndex:0];
-    Boxer *bSide = [self.boxers objectAtIndex:1];
-    
-     // we want "<A-side boxer> - <B-side boxer>"
-    title = [NSString stringWithFormat:@"%@-%@",[aSide lastName],[bSide lastName]];
-    
-    return title;
-}
-
--(NSString *)titleForRecentFightsView
-{
-    NSString *title = [[NSString alloc] init];
-    
-    Boxer *winner = [[Boxer alloc] init];
-    Boxer *loser = [[Boxer alloc] init];
-    for (Boxer *b in self.boxers) {
-        if ([b.boxerID.description isEqualToString:self.winnerID.description]) {
-            winner = b;
-        } else {
-            loser = b;
-        }
-    }
-    
-    if (self.stoppage) {
-        title = [NSString stringWithFormat:@"%@ KO %@",winner.lastName,loser.lastName];
-    } else {
-        title = [NSString stringWithFormat:@"%@ def. %@",winner.lastName,loser.lastName];
-    }
-    
-    return title;
-}
 
 @end

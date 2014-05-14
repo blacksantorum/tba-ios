@@ -29,7 +29,7 @@
         _handle = [dictionary objectForKey:@"screen_name"];
         _name = [dictionary objectForKey:@"name"];
         _profileImageURL = [dictionary objectForKey:@"profile_image_url"];
-        _twitterID = [dictionary objectForKey:@"id"];
+        _twitterID = [[dictionary objectForKey:@"id"] integerValue];
         NSDictionary *foyDict = [dictionary objectForKey:@"foy"];
         if (![JSONDataNullCheck isNull:foyDict]) {
             _foy = [[Fight alloc] initWithDictionary:foyDict];
@@ -46,7 +46,7 @@
         _handle = [dictionary objectForKey:@"screen_name"];
         _name = [dictionary objectForKey:@"name"];
         _profileImageURL = [dictionary objectForKey:@"img"];
-        _userID = [dictionary objectForKey:@"id"];
+        _userID = [[dictionary objectForKey:@"id"] integerValue];
     }
     
     return self;
@@ -57,8 +57,8 @@
     [encoder encodeObject:self.handle forKey:@"handle"];
     [encoder encodeObject:self.name forKey:@"name"];
     [encoder encodeObject:self.profileImageURL forKey:@"profileImageURL"];
-    [encoder encodeObject:self.userID forKey:@"userID"];
-    [encoder encodeObject:self.twitterID forKey:@"twitterID"];
+    [encoder encodeInteger:self.userID forKey:@"userID"];
+    [encoder encodeInteger:self.twitterID forKey:@"twitterID"];
     [encoder encodeObject:self.sessionToken forKey:@"sessionToken"];
 }
 
@@ -69,8 +69,8 @@
         _handle = [decoder decodeObjectForKey:@"handle"];
         _name = [decoder decodeObjectForKey:@"name"];
         _profileImageURL = [decoder decodeObjectForKey:@"profileImageURL"];
-        _userID = [decoder decodeObjectForKey:@"userID"];
-        _twitterID = [decoder decodeObjectForKey:@"twitterID"];
+        _userID = [decoder decodeIntegerForKey:@"userID"];
+        _twitterID = [decoder decodeIntegerForKey:@"twitterID"];
         _sessionToken = [decoder decodeObjectForKey:@"sessionToken"];
     }
     
@@ -79,12 +79,12 @@
 
 -(NSDictionary *)userDictionaryForSignIn
 {
-    return @{@"screen_name" : self.handle, @"name" : self.name, @"profile_image_url" : self.profileImageURL, @"id": self.twitterID, @"password" : [Auth encryptedKeyForUser:self]};
+    return @{@"screen_name" : self.handle, @"name" : self.name, @"profile_image_url" : self.profileImageURL, @"id": [NSNumber numberWithInteger:self.twitterID], @"password" : [Auth encryptedKeyForUser:self]};
 }
 
 -(NSString *)description
 {
-    return [NSString stringWithFormat:@"%@ %@ %@ %@ %@" ,self.userID,self.handle,self.name,self.profileImageURL,self.twitterID];
+    return [NSString stringWithFormat:@"%ld %@ %@ %@ %ld" ,(long)self.userID,self.handle,self.name,self.profileImageURL,(long)self.twitterID];
 }
 
 - (BOOL)isEqualToUser:(User *)user
@@ -109,13 +109,13 @@
     _handle = [response objectForKey:@"screen_name"];
     _name = [response objectForKey:@"name"];
     _profileImageURL = [response objectForKey:@"profile_image_url"];
-    _twitterID = [response objectForKey:@"id"];
+    _twitterID = [[response objectForKey:@"id"] integerValue];
 }
 
 -(void)signInWithBackend
 {
     [TBARailsClient sharedClient].delegate = self;
-    NSDictionary *userDictionary = @{@"screen_name" : self.handle, @"name" : self.name, @"profile_image_url" : self.profileImageURL, @"id": self.twitterID, @"password" : [Auth encryptedKeyForUser:self]};
+    NSDictionary *userDictionary = @{@"screen_name" : self.handle, @"name" : self.name, @"profile_image_url" : self.profileImageURL, @"id": [NSNumber numberWithInteger:self.twitterID], @"password" : [Auth encryptedKeyForUser:self]};
     [[TBARailsClient sharedClient] signInWithBackend:userDictionary];
 }
 
@@ -145,7 +145,7 @@
 - (void)TBARailsClient:(TBARailsClient *)client didLoginUser:(id)user
 {
     NSLog(@"Returned user: %@", user);
-    _userID = [user valueForKeyPath:@"user.id"];
+    _userID = [[user valueForKeyPath:@"user.id"] integerValue];
     _sessionToken = [user valueForKeyPath:@"user.session_token"];
     [self saveCurrrentUserInDefaults];
     self.isLoggedIn = YES;

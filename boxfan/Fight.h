@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Boxer.h"
+@class Boxer;
 
 typedef enum {
     TBAFightStateUpcoming,
@@ -19,15 +19,15 @@ typedef enum {
 
 @interface Fight : NSObject
 
-@property (nonatomic,strong) NSString *fightID;
-@property (nonatomic,strong) NSDate *date;
-@property (nonatomic,strong) NSString *weight;
-@property (nonatomic,strong) NSString *location;
-@property (nonatomic, strong) NSArray  *boxers;
-@property (nonatomic, strong) NSString *rounds;
-@property (nonatomic,strong) NSNumber *winnerID;
+@property (nonatomic) NSInteger fightID;
+@property (nonatomic, strong) Boxer *boxerA;
+@property (nonatomic, strong) Boxer *boxerB;
+@property (nonatomic, strong) NSDate *date;
+@property (nonatomic) NSInteger weight;
+@property (nonatomic, strong) NSString *location;
+@property (nonatomic) NSInteger rounds;
+@property (nonatomic) NSInteger winnerID;
 @property (nonatomic) TBAFightState state;
-
 @property BOOL stoppage;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;

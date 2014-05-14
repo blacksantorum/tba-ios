@@ -178,7 +178,7 @@
                             pick.byStoppage = NO;
                         }
                         pick.user = c.author;
-                        
+                        /*
                         Boxer *pickedBoxer;
                         NSString *pickedBoxerID = [pickDictionary objectForKey:@"winner_id"];
                         for (Boxer *b in self.fight.boxers) {
@@ -186,7 +186,9 @@
                                 pickedBoxer = b;
                             }
                         }
-                        pick.winner = pickedBoxer;
+                         
+                        */
+                        // pick.winner = pickedBoxer;
                         c.pick = pick;
                     }
                     
