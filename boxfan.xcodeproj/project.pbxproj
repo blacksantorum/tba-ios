@@ -15,6 +15,9 @@
 		EC0D5B4918869543009B32B4 /* RecentFightNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D5B4818869543009B32B4 /* RecentFightNavController.m */; };
 		EC0D5B4C18869637009B32B4 /* RecentFightsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D5B4B18869637009B32B4 /* RecentFightsVC.m */; };
 		EC157F4B18A4883B008D72AE /* launchicon.PNG in Resources */ = {isa = PBXBuildFile; fileRef = EC157F4A18A4883B008D72AE /* launchicon.PNG */; };
+		EC1DA01819612BDA003177C6 /* Places.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC1DA01719612BDA003177C6 /* Places.storyboard */; };
+		EC3675D31962829600E3FE79 /* PlacesNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3675D21962829600E3FE79 /* PlacesNavController.m */; };
+		EC3675D6196284F500E3FE79 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3675D5196284F500E3FE79 /* Place.m */; };
 		EC374AA0188F42BE00C4343A /* FightInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC374A9F188F42BE00C4343A /* FightInfoCell.xib */; };
 		EC374AA3188F45FB00C4343A /* FightInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC374AA2188F45FB00C4343A /* FightInfoCell.m */; };
 		EC374AA5188F52E400C4343A /* PickInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC374AA4188F52E400C4343A /* PickInfoCell.xib */; };
@@ -49,6 +52,7 @@
 		EC81025C18948F720092B7DB /* TTTTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = EC81025B18948F720092B7DB /* TTTTimeIntervalFormatter.m */; };
 		EC81026218949BC60092B7DB /* MostJabbedCommentsDisplayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EC81026118949BC60092B7DB /* MostJabbedCommentsDisplayVC.m */; };
 		EC81026518949BDE0092B7DB /* NewCommentsDisplayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EC81026418949BDE0092B7DB /* NewCommentsDisplayVC.m */; };
+		EC8650DA1963BF9800EF5551 /* TBAAddPlacesController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8650D91963BF9800EF5551 /* TBAAddPlacesController.m */; };
 		EC96EC9318A1C49800AD894D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EC96EC9218A1C49800AD894D /* Reachability.m */; };
 		EC96EC9518A202B300AD894D /* TopCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC96EC9418A202B300AD894D /* TopCommentCell.xib */; };
 		EC96EC9818A203B300AD894D /* TopCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC96EC9718A203B300AD894D /* TopCommentCell.m */; };
@@ -77,6 +81,9 @@
 		ECA15DE418964C8A0005E920 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA15DE318964C8A0005E920 /* Profile.m */; };
 		ECA2930618A36F74000DCDCE /* RecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA2930518A36F74000DCDCE /* RecordCell.xib */; };
 		ECA2930918A370A8000DCDCE /* RecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA2930818A370A8000DCDCE /* RecordCell.m */; };
+		ECB3F583196266A600EAD625 /* TBAPlacesMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB3F582196266A600EAD625 /* TBAPlacesMapViewController.m */; };
+		ECB3F5851962678D00EAD625 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB3F5841962678D00EAD625 /* MapKit.framework */; };
+		ECB3F5881962752A00EAD625 /* TBAGooglePlacesClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB3F5871962752A00EAD625 /* TBAGooglePlacesClient.m */; };
 		ECC109E018878994000B70CF /* FindUserNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC109DF18878994000B70CF /* FindUserNavController.m */; };
 		ECC109E81887C641000B70CF /* FindUserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC109E71887C641000B70CF /* FindUserVC.m */; };
 		ECC109EB1887F831000B70CF /* MyProfileNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC109EA1887F831000B70CF /* MyProfileNavController.m */; };
@@ -368,6 +375,11 @@
 		EC0D5B4A18869637009B32B4 /* RecentFightsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentFightsVC.h; sourceTree = "<group>"; };
 		EC0D5B4B18869637009B32B4 /* RecentFightsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentFightsVC.m; sourceTree = "<group>"; };
 		EC157F4A18A4883B008D72AE /* launchicon.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchicon.PNG; sourceTree = "<group>"; };
+		EC1DA01719612BDA003177C6 /* Places.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Places.storyboard; sourceTree = "<group>"; };
+		EC3675D11962829600E3FE79 /* PlacesNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesNavController.h; sourceTree = "<group>"; };
+		EC3675D21962829600E3FE79 /* PlacesNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesNavController.m; sourceTree = "<group>"; };
+		EC3675D4196284F500E3FE79 /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
+		EC3675D5196284F500E3FE79 /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
 		EC374A9F188F42BE00C4343A /* FightInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FightInfoCell.xib; sourceTree = "<group>"; };
 		EC374AA1188F45FB00C4343A /* FightInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FightInfoCell.h; sourceTree = "<group>"; };
 		EC374AA2188F45FB00C4343A /* FightInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FightInfoCell.m; sourceTree = "<group>"; };
@@ -418,6 +430,8 @@
 		EC81026118949BC60092B7DB /* MostJabbedCommentsDisplayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MostJabbedCommentsDisplayVC.m; sourceTree = "<group>"; };
 		EC81026318949BDE0092B7DB /* NewCommentsDisplayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCommentsDisplayVC.h; sourceTree = "<group>"; };
 		EC81026418949BDE0092B7DB /* NewCommentsDisplayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCommentsDisplayVC.m; sourceTree = "<group>"; };
+		EC8650D81963BF9800EF5551 /* TBAAddPlacesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBAAddPlacesController.h; sourceTree = "<group>"; };
+		EC8650D91963BF9800EF5551 /* TBAAddPlacesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBAAddPlacesController.m; sourceTree = "<group>"; };
 		EC96EC9118A1C49800AD894D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		EC96EC9218A1C49800AD894D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		EC96EC9418A202B300AD894D /* TopCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopCommentCell.xib; sourceTree = "<group>"; };
@@ -462,6 +476,11 @@
 		ECA2930518A36F74000DCDCE /* RecordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordCell.xib; sourceTree = "<group>"; };
 		ECA2930718A370A8000DCDCE /* RecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordCell.h; sourceTree = "<group>"; };
 		ECA2930818A370A8000DCDCE /* RecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordCell.m; sourceTree = "<group>"; };
+		ECB3F581196266A600EAD625 /* TBAPlacesMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBAPlacesMapViewController.h; sourceTree = "<group>"; };
+		ECB3F582196266A600EAD625 /* TBAPlacesMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBAPlacesMapViewController.m; sourceTree = "<group>"; };
+		ECB3F5841962678D00EAD625 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		ECB3F5861962752A00EAD625 /* TBAGooglePlacesClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBAGooglePlacesClient.h; sourceTree = "<group>"; };
+		ECB3F5871962752A00EAD625 /* TBAGooglePlacesClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBAGooglePlacesClient.m; sourceTree = "<group>"; };
 		ECC109DE18878994000B70CF /* FindUserNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindUserNavController.h; sourceTree = "<group>"; };
 		ECC109DF18878994000B70CF /* FindUserNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindUserNavController.m; sourceTree = "<group>"; };
 		ECC109E61887C641000B70CF /* FindUserVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindUserVC.h; sourceTree = "<group>"; };
@@ -750,6 +769,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECB3F5851962678D00EAD625 /* MapKit.framework in Frameworks */,
 				EC53740E18810AAA00DF16AB /* QuartzCore.framework in Frameworks */,
 				ECA0CE3C185E4EF8003380C5 /* CoreGraphics.framework in Frameworks */,
 				EC53741318810C7800DF16AB /* Social.framework in Frameworks */,
@@ -795,6 +815,8 @@
 				EC0D5B451886126D009B32B4 /* LeftButtonNavController.m */,
 				EC0D5B3D188542D3009B32B4 /* UpcomingFightNavController.m */,
 				EC0D5B3C188542D3009B32B4 /* UpcomingFightNavController.h */,
+				EC3675D11962829600E3FE79 /* PlacesNavController.h */,
+				EC3675D21962829600E3FE79 /* PlacesNavController.m */,
 			);
 			name = "Nav Subclasses";
 			path = ..;
@@ -817,6 +839,8 @@
 			children = (
 				EC57FA121910BD9600CCEBD0 /* TBARailsClient.h */,
 				EC57FA131910BD9600CCEBD0 /* TBARailsClient.m */,
+				ECB3F5861962752A00EAD625 /* TBAGooglePlacesClient.h */,
+				ECB3F5871962752A00EAD625 /* TBAGooglePlacesClient.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -847,6 +871,7 @@
 		ECA0CE38185E4EF8003380C5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ECB3F5841962678D00EAD625 /* MapKit.framework */,
 				EC53741218810C7800DF16AB /* Social.framework */,
 				EC53740018810AAA00DF16AB /* AudioToolbox.framework */,
 				EC53740118810AAA00DF16AB /* CFNetwork.framework */,
@@ -870,6 +895,7 @@
 			isa = PBXGroup;
 			children = (
 				EC616784189273FA00E9843E /* Main.storyboard */,
+				EC1DA01719612BDA003177C6 /* Places.storyboard */,
 				EC57FA111910BD0D00CCEBD0 /* Networking */,
 				EC0D5B431885433D009B32B4 /* Nav Subclasses */,
 				ECC109931886A66A000B70CF /* Sidebar */,
@@ -938,6 +964,8 @@
 				ECA1322A185FA64E00001793 /* User.m */,
 				ECA0CE75185E59BF003380C5 /* Fight.m */,
 				ECA0CE72185E5818003380C5 /* Boxer.m */,
+				EC3675D4196284F500E3FE79 /* Place.h */,
+				EC3675D5196284F500E3FE79 /* Place.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1367,6 +1395,10 @@
 				ECC109E71887C641000B70CF /* FindUserVC.m */,
 				ECA15D85189530960005E920 /* Fight Display View Controllers */,
 				ECA15D841895306D0005E920 /* List Of Fights View Controllers */,
+				ECB3F581196266A600EAD625 /* TBAPlacesMapViewController.h */,
+				ECB3F582196266A600EAD625 /* TBAPlacesMapViewController.m */,
+				EC8650D81963BF9800EF5551 /* TBAAddPlacesController.h */,
+				EC8650D91963BF9800EF5551 /* TBAAddPlacesController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -1625,6 +1657,7 @@
 				ECC10B25188E2F14000B70CF /* Cameroon.png in Resources */,
 				ECC10B10188E2F14000B70CF /* Austria.png in Resources */,
 				ECC10BAF188E2F14000B70CF /* Puerto Rico.png in Resources */,
+				EC1DA01819612BDA003177C6 /* Places.storyboard in Resources */,
 				ECC10B70188E2F14000B70CF /* Kiribati.png in Resources */,
 				ECC10B53188E2F14000B70CF /* Greenland.png in Resources */,
 				ECC10BD0188E2F14000B70CF /* Switzerland.png in Resources */,
@@ -1774,6 +1807,7 @@
 				EC374ACF188F758F00C4343A /* UpcomingFightViewController.m in Sources */,
 				ECC109E81887C641000B70CF /* FindUserVC.m in Sources */,
 				ECA0CE76185E59BF003380C5 /* Fight.m in Sources */,
+				EC8650DA1963BF9800EF5551 /* TBAAddPlacesController.m in Sources */,
 				ECA0CE4A185E4EF9003380C5 /* boxfanAppDelegate.m in Sources */,
 				EC96EC9318A1C49800AD894D /* Reachability.m in Sources */,
 				EC537418188227AC00DF16AB /* Auth.m in Sources */,
@@ -1782,11 +1816,13 @@
 				ECCA0A8B18972FE500403AFD /* ProfileCell.m in Sources */,
 				EC374AA8188F532C00C4343A /* PickInfoCell.m in Sources */,
 				EC57FA141910BD9600CCEBD0 /* TBARailsClient.m in Sources */,
+				ECB3F583196266A600EAD625 /* TBAPlacesMapViewController.m in Sources */,
 				EC81025918946BD70092B7DB /* CommentCell.m in Sources */,
 				EC81026518949BDE0092B7DB /* NewCommentsDisplayVC.m in Sources */,
 				ECD11526187E37DF00530434 /* FightDisplayVC.m in Sources */,
 				ECA0CE46185E4EF9003380C5 /* main.m in Sources */,
 				ECA15D8318951BAF0005E920 /* ListOfFightsCell.m in Sources */,
+				EC3675D6196284F500E3FE79 /* Place.m in Sources */,
 				ECC109FE188A93E7000B70CF /* Decision.m in Sources */,
 				ECCA0A981898DEB500403AFD /* UserHistoryTableVC.m in Sources */,
 				ECCA0A8F1897857500403AFD /* UpdateProfileViewController.m in Sources */,
@@ -1801,6 +1837,7 @@
 				ECA2930918A370A8000DCDCE /* RecordCell.m in Sources */,
 				ECA15DE418964C8A0005E920 /* Profile.m in Sources */,
 				ECA1322E185FA8A500001793 /* Pick.m in Sources */,
+				ECB3F5881962752A00EAD625 /* TBAGooglePlacesClient.m in Sources */,
 				EC0D5B3E188542D3009B32B4 /* UpcomingFightNavController.m in Sources */,
 				EC96EC9818A203B300AD894D /* TopCommentCell.m in Sources */,
 				EC5373FD1880C22F00DF16AB /* URLS.m in Sources */,
@@ -1808,6 +1845,7 @@
 				EC61678B189353B300E9843E /* CommentsDisplayVC.m in Sources */,
 				EC96EC9D18A30A2700AD894D /* SidebarCell.m in Sources */,
 				ECC109EE1888A47A000B70CF /* BoxFanRevealController.m in Sources */,
+				EC3675D31962829600E3FE79 /* PlacesNavController.m in Sources */,
 				ECCA0A951897CFBC00403AFD /* UserActivityCell.m in Sources */,
 				EC81026218949BC60092B7DB /* MostJabbedCommentsDisplayVC.m in Sources */,
 				EC0D5B461886126D009B32B4 /* LeftButtonNavController.m in Sources */,

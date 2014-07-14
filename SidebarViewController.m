@@ -14,6 +14,7 @@
 #import "FindUserNavController.h"
 #import "MyProfileNavController.h"
 #import "SidebarCell.h"
+#import "PlacesNavController.h"
 
 @interface SidebarViewController ()
 
@@ -44,7 +45,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -91,6 +92,11 @@
     if (row == 5) {
         cell.actionTitle.text = @"Log out";
         [cell.actionIcon setImage:[UIImage imageNamed:@"logout"]];
+    }
+    if (row == 6) {
+        cell.actionTitle.text = @"Places";
+        [cell.actionIcon setImage:nil];
+
     }
     
     return cell;
@@ -143,6 +149,16 @@
     if (row == 5) {
         if ([self.delegate respondsToSelector:@selector(logOut)]) {
             [self.delegate logOut];
+        }
+    }
+    
+    if (row == 6) {
+        if (![[[self revealController] frontViewController] isKindOfClass:[PlacesNavController class]]) {
+            UINavigationController *placesNavController = [[UIStoryboard storyboardWithName:@"Places" bundle:nil] instantiateViewControllerWithIdentifier:@"placesNav"];
+            [[self revealController] setFrontViewController:placesNavController];
+            [[self revealController] showViewController:placesNavController];
+        } else {
+            [[self revealController] showViewController:[[self revealController] frontViewController]];
         }
     }
 }
