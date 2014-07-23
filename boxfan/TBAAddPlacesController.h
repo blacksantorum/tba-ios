@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TBAGooglePlacesClient.h"
 
-@interface TBAAddPlacesController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate, TBAGooglePlacesClientDelegate>
+@interface TBAAddPlacesController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate, TBAGooglePlacesClientDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) CLLocation *location;
 

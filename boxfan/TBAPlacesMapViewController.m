@@ -16,7 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
-@property (strong, nonatomic) NSArray *placeResults;
+@property (strong, nonatomic) NSArray *places;
 
 @end
 
@@ -49,8 +49,52 @@
     [self.locationManager setDistanceFilter:kCLDistanceFilterNone];
     [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     
-    [[TBAGooglePlacesClient sharedClient] fetchResultsForKeyword:@"Abbey Tavern" atLocation:self.locationManager.location withDelegate:self];
+    [self fetchPlaces];
     
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    MKCoordinateRegion region;
+    region = MKCoordinateRegionMakeWithDistance(self.locationManager.location.coordinate,1000,1000);
+    
+    
+    [self.mapView setRegion:region animated:YES];
+}
+
+- (void)fetchPlaces
+{
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[URLS urlStringForGettingPlaces]]];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (connectionError) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry. Can't connect."
+                                                            message:@"Please check your data connection"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            
+        } else {
+            NSError *error = nil;
+            id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            if (error) {
+                
+            } else {
+                NSArray *array = (NSArray *)object;
+                NSMutableArray *places = [NSMutableArray array];
+                for (NSDictionary *placeDict in array) {
+                    NSLog(@"%@",placeDict[@"place"]);
+                    Place *p = [[Place alloc] initWithDictionary:placeDict[@"place"]];
+                    NSLog(@"%@",p);
+                    [self.mapView addAnnotation:p];
+                    // [places addObject:[[Place alloc] initWithDictionary:placeDict[@"place"]]];
+                }
+            }
+        }
+    }];
+
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -75,6 +119,7 @@
 }
 
 #pragma mark - MKMapViewDelegate methods.
+/*
 - (void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views {
     MKCoordinateRegion region;
     region = MKCoordinateRegionMakeWithDistance(self.locationManager.location.coordinate,1000,1000);
@@ -82,6 +127,7 @@
     
     [mv setRegion:region animated:YES];
 }
+ */
 
 
 @end

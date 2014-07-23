@@ -42,6 +42,4 @@ static NSString * const TBARailsURLString = @"http://www.theboxingapp.com/api/";
     }];
 }
 
-
-
 @end

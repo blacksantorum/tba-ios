@@ -7,6 +7,7 @@
 //
 
 #import "AFHTTPSessionManager.h"
+#import "Place.h"
 
 @protocol TBARailsClientDelegate;
 
@@ -19,6 +20,7 @@
 
 - (void)fetchUpcomingFights;
 - (void)fetchRecentFights;
+- (void)addPlace:(Place *)place forUser:(User *)user withDelegate:(id<TBARailsClientDelegate>)delegate;
 
 @end
 
@@ -28,5 +30,7 @@
 
 - (void)TBARailsClient:(TBARailsClient *)client didUpdateWithFights:(id)fights;
 - (void)TBARailsClient:(TBARailsClient *)client didFailWithError:(NSError *)error;
+
+- (void)TBARailsClient:(TBARailsClient *)client didAddPlace:(id)place;
 
 @end

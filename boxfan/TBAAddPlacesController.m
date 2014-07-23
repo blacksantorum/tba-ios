@@ -9,15 +9,28 @@
 #import "TBAAddPlacesController.h"
 #import "Place.h"
 #import <MapKit/MapKit.h>
+#import "User.h"
+#import "BoxFanRevealController.h"
+#import <AFNetworking/AFHTTPRequestOperationManager.h>
 
 @interface TBAAddPlacesController ()
 
 @property (nonatomic, strong) NSArray *placeResults;
 @property (nonatomic, strong) MKLocalSearchRequest *request;
 
+@property (nonatomic, strong) User *loggedInUser;
+
+@property (nonatomic, strong) Place *pendingPlace;
+
 @end
 
 @implementation TBAAddPlacesController
+
+-(User *)loggedInUser
+{
+    BoxFanRevealController *bfrc= (BoxFanRevealController *)self.revealController;
+    return bfrc.loggedInUser;
+}
 
 - (void)viewDidLoad
 {
@@ -45,6 +58,33 @@
     return [self.placeResults count];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MKMapItem *item = self.placeResults[indexPath.row];
+    NSLog(@"%@",item.placemark.addressDictionary);
+    self.pendingPlace = [[Place alloc] initWithMKMapItem:item];
+ 
+    [[[UIAlertView alloc] initWithTitle:@"Add place?" message:[NSString stringWithFormat:@"Add %@?",self.pendingPlace.name] delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes",nil] show];
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        self.pendingPlace = nil;
+    }
+    else {
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        
+        NSDictionary *parameters = @{@"name":self.pendingPlace.name, @"address":self.pendingPlace.address, @"city":self.pendingPlace.city, @"state":self.pendingPlace.state, @"zipcode":self.pendingPlace.zip};
+        [manager POST:[URLS urlStringForPostingPlace:self.pendingPlace] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"%@",responseObject);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            //[self setNetworkActivityIndicatorVisible:NO];
+        }];
+
+    }
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -16,23 +16,38 @@
 
 @implementation Place
 
+@synthesize coordinate = _coordinate;
+
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
     if (self = [super init]) {
         _name = [dictionary objectForKey:@"name"];
-        _placeID = [dictionary objectForKey:@"place_id"];
-        _location = CLLocationCoordinate2DMake([[dictionary valueForKeyPath:@"geometry.location.lat"] floatValue], [[dictionary valueForKeyPath:@"geometry.location.longitude"] floatValue]);
+        _placeID = [dictionary objectForKey:@"id"];
         
-        NSDictionary *address = [self addressFromFormattedAddressString:(NSString *)[dictionary objectForKey:@"formatted_address"]];
-        if (address) {
-            _isAmerican = YES;
-            _address = address[@"address"];
-            _city = address[@"city"];
-            _state = address[@"state"];
-            _country = address[@"country"];
-        } else {
-            _isAmerican = NO;
-        }
+        CGFloat lat = [[dictionary objectForKey:@"latitude"] floatValue];
+        CGFloat lon = [[dictionary objectForKey:@"longitude"] floatValue];
+        
+         NSLog(@"lattttitude %f lonnnngitude %f",lat,lon);
+        _coordinate = CLLocationCoordinate2DMake(lat,lon);
+        
+        _address = dictionary[@"address"];
+        _city = dictionary[@"city"];
+        _state = dictionary[@"state"];
+        _title = _name;
+        _subtitle = [NSString stringWithFormat:@"%@, %@",_address, _city];
+    }
+    return self;
+}
+
+- (instancetype)initWithMKMapItem:(MKMapItem *)item
+{
+    if (self = [super init]) {
+        NSDictionary *address = item.placemark.addressDictionary;
+        _name = address[@"Name"];
+        _address = address[@"Street"];
+        _city = address [@"City"];
+        _state = address [@"State"];
+        _zip = address [@"ZIP"];
     }
     return self;
 }
@@ -56,7 +71,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"%@, %@, %@, %@", self.name, self.address, self.city, self.state];
+    return [NSString stringWithFormat:@"%@, %@, %@, %@, %f, %f", self.name, self.address, self.city, self.state, self.coordinate.latitude, self.coordinate.longitude];
 }
 
 @end

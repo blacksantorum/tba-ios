@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Places Map View Controller-->
+        <!--Places Map View Controller - Places-->
         <scene sceneID="8uz-yA-X59">
             <objects>
-                <viewController id="QHY-qX-JBq" customClass="TBAPlacesMapViewController" sceneMemberID="viewController">
+                <viewController title="Places" id="QHY-qX-JBq" customClass="TBAPlacesMapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dgv-0a-a9i"/>
                         <viewControllerLayoutGuide type="bottom" id="FE8-Wp-ML3"/>
@@ -23,7 +23,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="hJe-ak-jJV">
+                    <navigationItem key="navigationItem" title="Places" id="hJe-ak-jJV">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="UJ8-V1-Dkf">
                             <connections>
                                 <segue destination="UX1-qd-OGE" kind="push" identifier="showPlacesSearch" id="Py0-bu-SBc"/>
@@ -48,7 +48,7 @@
             </objects>
             <point key="canvasLocation" x="786" y="-215"/>
         </scene>
-        <!--Add Places Controller-->
+        <!--Add Places Controller - Add Place-->
         <scene sceneID="h7V-8f-czR">
             <objects>
                 <tableViewController id="UX1-qd-OGE" customClass="TBAAddPlacesController" sceneMemberID="viewController">
@@ -95,7 +95,7 @@
                             <outlet property="delegate" destination="UX1-qd-OGE" id="OXK-9y-MRg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="QVi-wr-gVC"/>
+                    <navigationItem key="navigationItem" title="Add Place" id="QVi-wr-gVC"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="Pxy-6V-82Y" id="TP1-tq-oCX"/>
                     </connections>

@@ -32,6 +32,16 @@
     return appDelegate.prod;
 }
 
++ (NSString *)urlStringForGettingPlaces
+{
+    return [URLS appendSessionToken:[NSString stringWithFormat:@"%@/places", [URLS prod] ? PROD_BASE_URL : TEST_BASE_URL]];
+}
+
++ (NSString *)urlStringForPostingPlace:(Place *)place
+{
+    return [URLS appendSessionToken:[NSString stringWithFormat:@"%@/places", [URLS prod] ? PROD_BASE_URL : TEST_BASE_URL]];
+}
+
 +(NSString *)urlStringForPostingPickForFight:(Fight *)fight
 {
     return [URLS appendSessionToken:[NSString stringWithFormat:@"%@/fights/%@/picks", [URLS prod] ? PROD_BASE_URL : TEST_BASE_URL,fight.fightID.description]];

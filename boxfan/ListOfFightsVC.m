@@ -19,7 +19,11 @@
 
 - (NSString *)boxerNameDisplay:(Boxer *)boxer
 {
-    return [NSString stringWithFormat:@"%@. %@",[boxer.firstName substringToIndex:1] ,boxer.lastName];
+    if ([boxer.firstName length] > 0) {
+        return [NSString stringWithFormat:@"%@. %@",[boxer.firstName substringToIndex:1] ,boxer.lastName];
+    } else {
+        return boxer.lastName;
+    }
 }
 
 - (NSArray *)fightDates
@@ -59,6 +63,7 @@
 {
     NSMutableArray *fightArray = [[NSMutableArray alloc] init];
     for (NSDictionary *fightDictionary in self.JSONarray) {
+        NSLog(@"%@",fightDictionary);
         Fight *f = [[Fight alloc] initWithDictionary:fightDictionary[@"fight"]];
         NSMutableArray *boxers = [[NSMutableArray alloc] init];
         for (NSDictionary *boxerDictionary in [fightDictionary valueForKeyPath:@"fight.boxers"]){

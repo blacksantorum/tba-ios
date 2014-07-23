@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Fight.h"
 #import "Comment.h"
+#import "Place.h"
 
 #define PROD_BASE_URL @"http://www.theboxingapp.com/api"
 #define TEST_BASE_URL @"http://tba-test.herokuapp.com/api"
@@ -18,6 +19,8 @@
 
 + (NSString *)appendSessionToken:(NSString *)urlString;
 
++ (NSString *)urlStringForGettingPlaces;
++ (NSString *)urlStringForPostingPlace:(Place *)place;
 + (NSString *)urlStringForPostingPickForFight:(Fight *)fight;
 + (NSString *)urlStringForPostingDecisionForFight:(Fight *)fight;
 + (NSString *)urlStringForPostingCommentForFight:(Fight *)fight;
@@ -31,6 +34,7 @@
 + (NSString *)urlForUsersCurrentDecisionForFight:(Fight *)fight;
 + (NSString *)urlStringForUpdatingFOYtoFight:(Fight *)fight;
 
++ (NSURL *)urlForPlaces;
 + (NSURL *)urlForUpcomingFights;
 + (NSURL *)urlForRecentFights;
 + (NSURL *)urlForUsers;
